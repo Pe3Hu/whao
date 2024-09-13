@@ -1,0 +1,110 @@
+[
+ {
+  "race": "orc",
+  "title": "berserker",
+  "offense fury": 2,
+  "offense cunning": 1,
+  "defense fang": 6,
+  "defense claw": 10
+ },
+ {
+  "race": "orc",
+  "title": "shaman",
+  "offense fury": 2,
+  "offense wisdom": 1,
+  "support extraction": 9,
+  "defense fang": 4,
+  "defense claw": 3
+ },
+ {
+  "race": "orc",
+  "title": "hunter",
+  "offense cunning": 2,
+  "offense wisdom": 1,
+  "support exploration": 9,
+  "defense fang": 3,
+  "defense claw": 4
+ },
+ {
+  "race": "orc",
+  "title": "raider",
+  "offense fury": 1,
+  "offense cunning": 2,
+  "support exploration": 7,
+  "defense fang": 5,
+  "defense claw": 4
+ },
+ {
+  "race": "elf",
+  "title": "assassin",
+  "offense fury": 1,
+  "offense cunning": 2,
+  "support exploration": 10,
+  "defense fang": 2,
+  "defense claw": 4
+ },
+ {
+  "race": "elf",
+  "title": "sorcerer",
+  "offense cunning": 1,
+  "offense wisdom": 2,
+  "support extraction": 10,
+  "defense fang": 4,
+  "defense claw": 2
+ },
+ {
+  "race": "elf",
+  "title": "druid",
+  "offense fury": 2,
+  "offense wisdom": 1,
+  "support extraction": 7,
+  "defense fang": 4,
+  "defense claw": 5
+ },
+ {
+  "race": "elf",
+  "title": "sniper",
+  "offense cunning": 2,
+  "offense wisdom": 1,
+  "support exploration": 6,
+  "support extraction": 6,
+  "defense fang": 2,
+  "defense claw": 2
+ },
+ {
+  "race": "dwarf",
+  "title": "runologist",
+  "offense cunning": 1,
+  "offense wisdom": 2,
+  "support exploration": 8,
+  "defense fang": 5,
+  "defense claw": 3
+ },
+ {
+  "race": "dwarf",
+  "title": "guardian",
+  "offense fury": 1,
+  "offense wisdom": 2,
+  "defense fang": 10,
+  "defense claw": 6
+ },
+ {
+  "race": "dwarf",
+  "title": "crossbowman",
+  "offense cunning": 2,
+  "offense wisdom": 1,
+  "support extraction": 8,
+  "defense fang": 3,
+  "defense claw": 5
+ },
+ {
+  "race": "dwarf",
+  "title": "bomber",
+  "offense fury": 2,
+  "offense wisdom": 1,
+  "support exploration": 5,
+  "support extraction": 5,
+  "defense fang": 3,
+  "defense claw": 3
+ }
+]

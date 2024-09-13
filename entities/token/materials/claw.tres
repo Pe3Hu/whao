@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://jaxghko8lwa1"]
+
+[ext_resource type="Shader" path="res://shaders/gradient effects.gdshader" id="1_s3fmb"]
+
+[resource]
+shader = ExtResource("1_s3fmb")
+shader_parameter/effect_filling = 1.0
+shader_parameter/angle = -75.0
+shader_parameter/keep_saturation = 0.0
+shader_parameter/keep_luminance = 0.0
+shader_parameter/color_start = Color(0.44, 0.3311, 0.198, 1)
+shader_parameter/start_pos = 0.0
+shader_parameter/color_mid = Color(1, 1, 1, 1)
+shader_parameter/mid_pos = 0.5
+shader_parameter/color_end = Color(0.24, 0.1482, 0.036, 1)
+shader_parameter/end_pos = 1.0
+shader_parameter/midpos_enabled = false
+shader_parameter/range_start = 0.0
+shader_parameter/range_end = 1.0
+shader_parameter/range_softedge = 0.1
