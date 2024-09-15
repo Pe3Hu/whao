@@ -4,6 +4,7 @@ class_name Planet extends PanelContainer
 @export var world: World
 @export var dungeons: VBoxContainer
 @export var guilds: VBoxContainer
+@export var maze: Maze
 
 @onready var dungeon_scene = preload("res://entities/dungeon/dungeon.tscn")
 @onready var guild_scene = preload("res://entities/guild/guild.tscn")
@@ -13,6 +14,7 @@ var resource: PlanetResource
 
 func _ready() -> void:
 	resource = PlanetResource.new()
+	maze.resource = resource.maze
 	
 	init_guilds()
 	init_dungeons()
