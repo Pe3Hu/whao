@@ -1,15 +1,23 @@
-[gd_scene load_steps=12 format=3 uid="uid://bfs7oqqxmoyl3"]
+[gd_scene load_steps=20 format=3 uid="uid://bfs7oqqxmoyl3"]
 
 [ext_resource type="Script" path="res://entities/member/member.gd" id="1_gxcw5"]
-[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/trail/trail.tscn" id="2_rc8e1"]
+[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/token/token.tscn" id="2_rc8e1"]
 [ext_resource type="Material" uid="uid://bvfxn6etumrwn" path="res://entities/token/materials/experience.tres" id="3_g1ppb"]
+[ext_resource type="Texture2D" uid="uid://oaima86y1ss6" path="res://entities/token/images/experience.png" id="4_v1r7t"]
 [ext_resource type="Material" uid="uid://brwvgxqtaxjep" path="res://entities/token/materials/fang.tres" id="5_vms7i"]
+[ext_resource type="Texture2D" uid="uid://bl4q2ukhbjgx7" path="res://entities/token/images/fang.png" id="6_106nk"]
 [ext_resource type="Material" uid="uid://jaxghko8lwa1" path="res://entities/token/materials/claw.tres" id="7_0mp1l"]
+[ext_resource type="Texture2D" uid="uid://cbv7mmx5wbdc1" path="res://entities/token/images/claw.png" id="8_msl6o"]
 [ext_resource type="Material" uid="uid://yd7ss403or8o" path="res://entities/token/materials/extraction.tres" id="9_nxotm"]
+[ext_resource type="Texture2D" uid="uid://bh4d8yphujlm6" path="res://entities/token/images/extraction.png" id="10_0hlca"]
 [ext_resource type="Material" uid="uid://b1ir611q6d7dt" path="res://entities/token/materials/exploration.tres" id="11_a1xsr"]
+[ext_resource type="Texture2D" uid="uid://buctqy2664h05" path="res://entities/token/images/exploration.png" id="12_nfedr"]
 [ext_resource type="Material" uid="uid://c4tb24qsr0tr8" path="res://entities/token/materials/fury.tres" id="13_lsnkn"]
+[ext_resource type="Texture2D" uid="uid://c7l2uoiuv6rjx" path="res://entities/token/images/fury.png" id="14_wxs8a"]
 [ext_resource type="Material" uid="uid://bkfabyqnqogs2" path="res://entities/token/materials/cunning.tres" id="15_pnj0u"]
+[ext_resource type="Texture2D" uid="uid://cbxtbfvepcqlg" path="res://entities/token/images/cunning.png" id="16_ttrvk"]
 [ext_resource type="Material" uid="uid://cxdkhoji71uto" path="res://entities/token/materials/wisdom.tres" id="17_nc3nl"]
+[ext_resource type="Texture2D" uid="uid://uhineh5doivc" path="res://entities/token/images/wisdom.png" id="18_8p6vo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 
@@ -30,6 +38,8 @@ material = ExtResource("3_g1ppb")
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+texture = ExtResource("4_v1r7t")
+type = "experience"
 
 [node name="Offenses" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -42,11 +52,15 @@ alignment = 1
 unique_name_in_owner = true
 material = ExtResource("5_vms7i")
 layout_mode = 2
+texture = ExtResource("6_106nk")
+type = "fang"
 
 [node name="Claw" parent="Offenses" instance=ExtResource("2_rc8e1")]
 unique_name_in_owner = true
 material = ExtResource("7_0mp1l")
 layout_mode = 2
+texture = ExtResource("8_msl6o")
+type = "claw"
 
 [node name="Supports" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -59,11 +73,15 @@ alignment = 1
 unique_name_in_owner = true
 material = ExtResource("9_nxotm")
 layout_mode = 2
+texture = ExtResource("10_0hlca")
+type = "extraction"
 
 [node name="Exploration" parent="Supports" instance=ExtResource("2_rc8e1")]
 unique_name_in_owner = true
 material = ExtResource("11_a1xsr")
 layout_mode = 2
+texture = ExtResource("12_nfedr")
+type = "exploration"
 
 [node name="Defenses" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -76,13 +94,19 @@ alignment = 1
 unique_name_in_owner = true
 material = ExtResource("13_lsnkn")
 layout_mode = 2
+texture = ExtResource("14_wxs8a")
+type = "fury"
 
 [node name="Cunning" parent="Defenses" instance=ExtResource("2_rc8e1")]
 unique_name_in_owner = true
 material = ExtResource("15_pnj0u")
 layout_mode = 2
+texture = ExtResource("16_ttrvk")
+type = "cunning"
 
 [node name="Wisdom" parent="Defenses" instance=ExtResource("2_rc8e1")]
 unique_name_in_owner = true
 material = ExtResource("17_nc3nl")
 layout_mode = 2
+texture = ExtResource("18_8p6vo")
+type = "wisdom"

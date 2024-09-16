@@ -1,11 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm5me58j23h86"]
+[gd_scene load_steps=3 format=3 uid="uid://bm5me58j23h86"]
 
 [ext_resource type="Script" path="res://entities/planet/planet.gd" id="1_piy68"]
-[ext_resource type="PackedScene" uid="uid://c0f5w4dd4rvd5" path="res://entities/maze/maze.tscn" id="2_bopng"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 
-[node name="Planet" type="PanelContainer" node_paths=PackedStringArray("dungeons", "guilds", "maze")]
+[node name="Planet" type="PanelContainer" node_paths=PackedStringArray("dungeons", "guilds")]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -17,11 +16,6 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_piy68")
 dungeons = NodePath("HBox/Dungeons")
 guilds = NodePath("HBox/Guilds")
-maze = NodePath("Maze")
-
-[node name="Maze" parent="." instance=ExtResource("2_bopng")]
-visible = false
-layout_mode = 2
 
 [node name="HBox" type="HBoxContainer" parent="."]
 layout_mode = 2
