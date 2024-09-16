@@ -1,9 +1,9 @@
-GridContainer
-VBoxContainer
 HBoxContainer
+TextureRect
+VBoxContainer
+GridContainer
 Node2D
 Control
-TextureRect
 PanelContainer
 MeshInstance2D
 MeshInstance3D

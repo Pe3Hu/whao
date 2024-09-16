@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm5me58j23h86"]
+[gd_scene load_steps=4 format=3 uid="uid://bm5me58j23h86"]
 
 [ext_resource type="Script" path="res://entities/planet/planet.gd" id="1_piy68"]
+[ext_resource type="PackedScene" uid="uid://ca48dw3j2ie7l" path="res://entities/item/item.tscn" id="2_xm0iq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 
@@ -27,7 +28,12 @@ layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
 
+[node name="Item" parent="HBox/Dungeons" instance=ExtResource("2_xm0iq")]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="Guilds" type="VBoxContainer" parent="HBox"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1

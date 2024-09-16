@@ -17,6 +17,8 @@ func _ready() -> void:
 	init_guilds()
 	init_dungeons()
 	
+	%Item.resource = resource.forge.create_item()
+	
 func init_guilds() -> void:
 	for guild_resource in resource.guilds:
 		var guild = guild_scene.instantiate()

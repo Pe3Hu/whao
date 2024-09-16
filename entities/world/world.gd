@@ -27,13 +27,5 @@ func _input(event) -> void:
 					pass
 
 
-#var waffle: waffleResource:
-	#set = set_waffle
-#
-#
-#func set_waffle(waffle_: waffleResource) -> ShipResource:
-	#waffle = waffle_
-	#waffle.ships.append(self)
-	#return self
-	
+
 	

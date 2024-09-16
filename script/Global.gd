@@ -26,10 +26,12 @@ func init_arr() -> void:
 		"fang", "claw", 
 		"stamina", "experience"
 	]
-	arr.offense = [ "fury", "cunning", "wisdom"]
-	arr.support = [ "exploration", "extraction"]
-	arr.defense = [ "fang", "claw"]
-	arr.progression = [ "stamina", "experience"]
+	arr.offense = ["fury", "cunning", "wisdom"]
+	arr.support = ["exploration", "extraction"]
+	arr.defense = ["fang", "claw"]
+	arr.progression = ["stamina", "experience"]
+	
+	arr.rarity = ["common", "uncommon", "rare", "epic", "legendary"]
 	
 func init_num() -> void:
 	num.index = {}
@@ -39,6 +41,7 @@ func init_dict() -> void:
 	init_corner()
 	
 	init_profession()
+	init_item()
 	
 func init_direction() -> void:
 	dict.direction = {}
@@ -155,6 +158,39 @@ func init_profession() -> void:
 		dict.profession.race[profession.race].append(profession.title)
 		dict.profession.title[profession.title] = data
 	
+func init_item() -> void:
+	dict.item = {}
+	dict.item.title = {}
+	dict.item.type = {}
+	var exceptions = ["title"]
+	
+	var path = "res://entities/item/item.json"
+	var array = load_data(path)
+	
+	for item in array:
+		var data = {}
+		data.affixs = {}
+		
+		for key in item:
+			if !exceptions.has(key):
+				var words = key.split(" ")
+				
+				if words.size() > 1:
+					match words[0]:
+						"affix":
+							data.affixs[item[key]] = -1
+						"weight":
+							var affix = data.affixs.keys()[int(words[1])]
+							data.affixs[affix] = item[key]
+				else:
+					data[key] = item[key]
+	
+		if !dict.item.type.has(item.type):
+			dict.item.type[item.type] = []
+		
+		dict.item.type[item.type].append(item.title)
+		dict.item.title[item.title] = data
+	
 func init_vec():
 	vec.size = {}
 	vec.size.sixteen = Vector2(16, 16)
@@ -168,8 +204,19 @@ func init_window_size():
 	vec.size.window.center = Vector2(vec.size.window.width/2, vec.size.window.height/2)
 	
 func init_color():
-	#var h = 360.0
-	pass
+	var h = 360.0
+	
+	color.rarity = {}
+	#color.rarity["ordinary"] = Color.from_hsv(210 / h, 0.5, 0.2)
+	color.rarity["common"] = Color.from_hsv(210 / h, 0.2, 0.6)
+	#color.rarity["unusual"] = Color.from_hsv(140 / h, 0.8, 0.3)
+	color.rarity["uncommon"] = Color.from_hsv(140 / h, 0.9, 0.6)
+	#color.rarity["rare"] = Color.from_hsv(210 / h, 0.9, 0.3)
+	color.rarity["rare"] = Color.from_hsv(210 / h, 0.9, 0.6)
+	#color.rarity["epic"] = Color.from_hsv(300 / h, 0.7, 0.4)
+	color.rarity["epic"] = Color.from_hsv(300 / h, 0.9, 0.6)
+	#color.rarity["legendary"] = Color.from_hsv(50 / h, 0.8, 0.5)
+	color.rarity["legendary"] = Color.from_hsv(60 / h, 0.9, 0.8)
 	
 func save(path_: String, data_: String):
 	var path = path_ + ".json"
