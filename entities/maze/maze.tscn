@@ -1,0 +1,47 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0f5w4dd4rvd5"]
+
+[ext_resource type="Script" path="res://entities/maze/maze.gd" id="1_4mu3e"]
+
+[node name="Maze" type="Control" node_paths=PackedStringArray("crossroads", "trails")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4mu3e")
+crossroads = NodePath("NinePatchRect/Crossroads")
+trails = NodePath("NinePatchRect/Trails")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Crossroads" type="GridContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 0
+theme_override_constants/v_separation = 0
+
+[node name="Trails" type="Control" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

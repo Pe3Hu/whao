@@ -22,10 +22,5 @@ func _ready() -> void:
 func _input(event) -> void:
 	if event is InputEventKey:
 		match event.keycode:
-			KEY_SPACE:
-				if event.is_pressed() && !event.is_echo():
-					pass
-
-
-
-	
+			KEY_ESCAPE:
+				get_tree().quit()

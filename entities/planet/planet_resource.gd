@@ -3,10 +3,13 @@ class_name PlanetResource extends Resource
 
 var dungeons: Array[DungeonResource]
 var guilds: Array[GuildResource]
+var maze: MazeResource
 var forge: ForgeResource
 
 
 func _init() -> void:
+	maze = MazeResource.new()
+	maze.planet = self
 	forge = ForgeResource.new()
 	
 	init_guilds()

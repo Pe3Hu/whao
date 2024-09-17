@@ -13,11 +13,10 @@ var resource: PlanetResource
 
 func _ready() -> void:
 	resource = PlanetResource.new()
+	%Maze.set_resource(resource.maze).set_planet(self)
 	
 	init_guilds()
 	init_dungeons()
-	
-	%Item.resource = resource.forge.create_item()
 	
 func init_guilds() -> void:
 	for guild_resource in resource.guilds:

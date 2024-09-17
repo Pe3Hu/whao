@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfs7oqqxmoyl3"]
+
+[ext_resource type="Script" path="res://entities/crossroad/crossroad.gd" id="1_gxcw5"]
+[ext_resource type="Texture2D" uid="uid://egrscovh71ku" path="res://entities/crossroad/images/square.png" id="2_6cmtx"]
+[ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://assets/fonts/digital/Inter-Black.ttf" id="2_cssey"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ufkr4"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="Crossroad" type="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -48.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ufkr4")
+script = ExtResource("1_gxcw5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+texture = ExtResource("2_6cmtx")
+
+[node name="Remoteness" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_cssey")
+theme_override_font_sizes/font_size = 40
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
