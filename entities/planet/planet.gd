@@ -14,6 +14,7 @@ var resource: PlanetResource
 func _ready() -> void:
 	resource = PlanetResource.new()
 	%Maze.set_resource(resource.maze).set_planet(self)
+	%Station.set_resource(resource.station).set_planet(self)
 	
 	init_guilds()
 	init_dungeons()

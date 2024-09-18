@@ -28,8 +28,10 @@ func set_maze(maze_: Maze) -> Crossroad:
 	return self
 	
 func update() -> void:
-	%Remoteness.text = str(resource.deadend_remoteness)
-	%TextureRect.modulate = Color.from_hsv(float(resource.deadend_remoteness + 1) / maze.resource.max_deadend_remoteness, 0.6, 0.7)
+	#%Remoteness.text = str(resource.deadend_remoteness)
+	%Index.text = str(resource.index)
+	if resource.terrain != "":
+		%TextureRect.modulate = Global.color.terrain[resource.terrain]#Color.from_hsv(float(resource.deadend_remoteness + 1) / maze.resource.max_deadend_remoteness, 0.6, 0.7)
 	#if resource.is_origin:
 		#origin = "origin"
 	#else:

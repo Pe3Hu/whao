@@ -7,3 +7,9 @@
 [node name="Route" type="PanelContainer"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_2hdwv")
+
+[node name="Milestones" type="HBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1

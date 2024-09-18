@@ -10,6 +10,8 @@ var grids: Dictionary
 var previous_origin: CrossroadResource
 var origin: CrossroadResource
 var deadends: Array[CrossroadResource]
+var entrances: Array[CrossroadResource]
+var noise = FastNoiseLite.new()
 
 var n: int = 12
 var rows: int = n
@@ -36,6 +38,7 @@ func set_planet(planet_: PlanetResource) -> MazeResource:
 	roll_random_pattern()
 	calc_crossroads_deadend_remoteness()
 	limit_max_deadend_remoteness()
+	init_terrains()
 	return self
 	
 func init_crossroads() -> void:
@@ -81,14 +84,16 @@ func calc_crossroads_deadend_remoteness() -> void:
 	var visited = []
 	var current: Array[CrossroadResource]
 	var next = []
-	var border_crossroads = crossroads.filter(func(a): return a.grid.x == 0 or a.grid.x == cols -1 or a.grid.y == 0 or a.grid.y == rows -1)
+	entrances = crossroads.filter(func(a): return a.grid.x == 0 or a.grid.x == cols -1 or a.grid.y == 0 or a.grid.y == rows -1)
 	
-	for crossroad in border_crossroads:
+	for crossroad in entrances:
 		var _trails = crossroad.trails.keys().filter(func(a): return a.is_active)
 		
 		if _trails.size() == 1:
 			current.append(crossroad)
 	
+	entrances.clear()
+	entrances.append_array(current)
 	var unvisited = crossroads.filter(func(a): return !current.has(a))
 	
 	while !unvisited.is_empty() and max_deadend_remoteness < cols * rows:
@@ -141,3 +146,56 @@ func limit_max_deadend_remoteness() -> void:
 	while limit_deadend_remoteness < max_deadend_remoteness and counter > 0:
 		recalc_max_deadend_remoteness()
 		counter -= 1
+	
+	for crossroad in crossroads:
+		crossroad.roll_hazard()
+	
+func init_terrains() -> void:
+	noise.seed = 0
+	var min_heat = 1
+	var max_heat = 0
+	
+	for crossroad in crossroads:
+		if crossroad.heat > max_heat:
+			max_heat = crossroad.heat
+		if crossroad.heat < min_heat:
+			min_heat = crossroad.heat
+	
+	var terrains = {}
+	terrains["desert"] = 5
+	terrains["jungle"] = 3
+	terrains["swamp"] = 1
+	terrains["plain"] = -1
+	terrains["mountain"] = -3
+	terrains["tundra"] = -5
+	var current = []
+	var next = {}
+	
+	for crossroad in crossroads:
+		crossroad.heat = roundi(remap(crossroad.heat, min_heat, max_heat, -5, 5))#min_heat, max_heat, crossroad.heat)
+	
+		if crossroad.trails.keys().filter(func(a): return a.is_active).size() == 1:
+			var options = terrains.keys().filter(func (a): return abs(terrains[a] - crossroad.heat) <= 1)
+			crossroad.terrain = options.pick_random()
+			current.append(crossroad)
+	
+	var unvisited = crossroads.filter(func(a): return !current.has(a))
+	
+	while !unvisited.is_empty():
+		next = {}
+		
+		for crossroad in current:
+			var neighbors = crossroad.neighbors.keys().filter(func(a): return crossroad.neighbors[a].is_active and a.terrain == "" and !next.has(a) and unvisited.has(a))
+			
+			for neighbor in neighbors:
+				if !next.has(neighbor):
+					next[neighbor] = []
+			
+				next[neighbor].append(crossroad.terrain)
+		
+		for crossroad in next:
+			crossroad.terrain = next[crossroad].pick_random()
+		
+		current.clear()
+		current.append_array(next.keys())
+		unvisited = unvisited.filter(func(a): return !current.has(a))

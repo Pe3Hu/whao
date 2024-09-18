@@ -1,30 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b87qrflqy2l2w"]
+[gd_scene load_steps=4 format=3 uid="uid://b87qrflqy2l2w"]
 
-[ext_resource type="Material" uid="uid://cdqjhsknqpkb1" path="res://entities/token/materials/stamina.tres" id="1_6vrxo"]
 [ext_resource type="Texture2D" uid="uid://bwaqdxks7q6pf" path="res://entities/milestone/images/milestone.png" id="2_gnrub"]
-[ext_resource type="Script" path="res://entities/token/token.gd" id="3_jbqw8"]
+[ext_resource type="Script" path="res://entities/milestone/milestone.gd" id="2_tbc2p"]
 [ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://assets/fonts/digital/Inter-Black.ttf" id="4_hv02a"]
 
-[node name="Token" type="TextureRect"]
-material = ExtResource("1_6vrxo")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Milestone" type="TextureRect"]
+offset_right = 64.0
+offset_bottom = 64.0
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 6
 texture = ExtResource("2_gnrub")
-script = ExtResource("3_jbqw8")
+script = ExtResource("2_tbc2p")
 
-[node name="Value" type="Label" parent="."]
+[node name="Hazard" type="Label" parent="."]
 unique_name_in_owner = true
+z_index = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 8
@@ -38,9 +28,9 @@ offset_right = 14.0
 offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_hv02a")
 theme_override_font_sizes/font_size = 20
-text = "0"
+text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,5 +1,4 @@
-{
-"blank":[
+[
  {
   "title": "owl",
   "skin": "feathers",
@@ -13,7 +12,11 @@
   "level 6": "3,3,36,7",
   "level 7": "4,4,48,8",
   "level 8": "6,6,60,9",
-  "level 9": "9,9,72,10"
+  "level 9": "9,9,72,10",
+  "terrain jungle": 3,
+  "terrain tundra": 8,
+  "terrain mountain": 5,
+  "terrain plain": 2
  },
  {
   "title": "raven",
@@ -28,7 +31,10 @@
   "level 6": "6,24,12,7",
   "level 7": "8,32,16,8",
   "level 8": "12,40,20,9",
-  "level 9": "18,48,24,10"
+  "level 9": "18,48,24,10",
+  "terrain tundra": 4,
+  "terrain swamp": 6,
+  "terrain plain": 8
  },
  {
   "title": "hawk",
@@ -43,7 +49,10 @@
   "level 6": "12,6,24,7",
   "level 7": "16,8,32,8",
   "level 8": "20,12,40,9",
-  "level 9": "24,18,48,10"
+  "level 9": "24,18,48,10",
+  "terrain mountain": 9,
+  "terrain desert": 5,
+  "terrain plain": 4
  },
  {
   "title": "bear",
@@ -58,7 +67,10 @@
   "level 6": "36,3,3,7",
   "level 7": "48,4,4,8",
   "level 8": "60,6,6,9",
-  "level 9": "72,9,9,10"
+  "level 9": "72,9,9,10",
+  "terrain jungle": 4,
+  "terrain tundra": 6,
+  "terrain mountain": 8
  },
  {
   "title": "cougar",
@@ -73,7 +85,11 @@
   "level 6": "12,24,6,7",
   "level 7": "16,32,8,8",
   "level 8": "20,40,12,9",
-  "level 9": "24,48,18,10"
+  "level 9": "24,48,18,10",
+  "terrain jungle": 8,
+  "terrain mountain": 2,
+  "terrain swamp": 3,
+  "terrain plain": 5
  },
  {
   "title": "wolf",
@@ -88,7 +104,10 @@
   "level 6": "24,6,12,7",
   "level 7": "32,8,16,8",
   "level 8": "40,12,20,9",
-  "level 9": "48,18,24,10"
+  "level 9": "48,18,24,10",
+  "terrain tundra": 9,
+  "terrain desert": 3,
+  "terrain plain": 6
  },
  {
   "title": "turtle",
@@ -103,7 +122,10 @@
   "level 6": "6,12,24,7",
   "level 7": "8,16,32,8",
   "level 8": "12,20,40,9",
-  "level 9": "18,24,48,10"
+  "level 9": "18,24,48,10",
+  "terrain desert": 7,
+  "terrain swamp": 8,
+  "terrain plain": 3
  },
  {
   "title": "crocodile",
@@ -118,7 +140,10 @@
   "level 6": "24,12,6,7",
   "level 7": "32,16,8,8",
   "level 8": "40,20,12,9",
-  "level 9": "48,24,18,10"
+  "level 9": "48,24,18,10",
+  "terrain jungle": 5,
+  "terrain desert": 4,
+  "terrain swamp": 9
  },
  {
   "title": "cobra",
@@ -133,7 +158,9 @@
   "level 6": "3,36,3,7",
   "level 7": "4,48,4,8",
   "level 8": "6,60,6,9",
-  "level 9": "9,72,9,10"
+  "level 9": "9,72,9,10",
+  "terrain jungle": 6,
+  "terrain mountain": 3,
+  "terrain desert": 9
  }
 ]
-}

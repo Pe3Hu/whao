@@ -42,6 +42,7 @@ func init_dict() -> void:
 	
 	init_profession()
 	init_item()
+	init_crossroad()
 	
 func init_direction() -> void:
 	dict.direction = {}
@@ -158,6 +159,29 @@ func init_profession() -> void:
 		dict.profession.race[profession.race].append(profession.title)
 		dict.profession.title[profession.title] = data
 	
+func init_crossroad() -> void:
+	dict.crossroad = {}
+	dict.crossroad.remoteness = {}
+	var exceptions = ["remoteness"]
+	
+	var path = "res://entities/crossroad/crossroad.json"
+	var array = load_data(path)
+	
+	for crossroad in array:
+		crossroad.remoteness = int(crossroad.remoteness)
+		var data = {}
+		
+		for key in crossroad:
+			if !exceptions.has(key):
+				var words = key.split(" ")
+				
+				if !data.has(words[0]):
+					data[words[0]] = {}
+				
+				data[words[0]][words[1]] = int(crossroad[key])
+		
+		dict.crossroad.remoteness[crossroad.remoteness] = data
+	
 func init_item() -> void:
 	dict.item = {}
 	dict.item.title = {}
@@ -217,6 +241,14 @@ func init_color():
 	color.rarity["epic"] = Color.from_hsv(300 / h, 0.9, 0.6)
 	#color.rarity["legendary"] = Color.from_hsv(50 / h, 0.8, 0.5)
 	color.rarity["legendary"] = Color.from_hsv(60 / h, 0.9, 0.8)
+	
+	color.terrain = {}
+	color.terrain["desert"] = Color.from_hsv(60 / h, 0.8, 0.8)
+	color.terrain["jungle"] = Color.from_hsv(130 / h, 0.9, 0.7)
+	color.terrain["swamp"] = Color.from_hsv(90 / h, 0.8, 0.4)
+	color.terrain["plain"] = Color.from_hsv(80 / h, 0.7, 0.7)
+	color.terrain["mountain"] = Color.from_hsv(180 / h, 0.3, 0.6)
+	color.terrain["tundra"] = Color.from_hsv(230 / h, 0.4, 0.6)
 	
 func save(path_: String, data_: String):
 	var path = path_ + ".json"

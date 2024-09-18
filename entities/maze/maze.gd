@@ -19,8 +19,8 @@ func set_planet(planet_: Planet) -> Maze:
 	
 func set_resource(resource_: MazeResource) -> Maze:
 	resource = resource_
-	custom_minimum_size = resource.total_size
-	size = resource.total_size
+	custom_minimum_size = resource.total_size * 0.5
+	size = resource.total_size * 0.5
 	
 	init_crossroads()
 	init_trails()

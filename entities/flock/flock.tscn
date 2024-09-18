@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://b61qq0cvhwbcv"]
+
+[ext_resource type="Script" path="res://entities/flock/flock.gd" id="1_yl55p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+
+[node name="Flock" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
+script = ExtResource("1_yl55p")
+
+[node name="Beasts" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 3

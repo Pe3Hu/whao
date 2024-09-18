@@ -1,20 +1,16 @@
 @tool
-class_name Token extends TextureRect
+class_name Milestone extends TextureRect
 
 
-@export_enum(
-	"fury", "cunning", "wisdom", 
-	"exploration", "extraction", 
-	"fang", "claw", 
-	"stamina", "experience"
-				) var type: String = "fury":
-	set(type_):
-		type = type_
-		material = load("res://entities/token/materials/" + type + ".tres")
-		texture = load("res://entities/token/images/" + type + ".png")
-@export var value: int:
-	set(value_):
-		value = value_
-		%Value.text = str(value)
+@export var terrain: String:
+	set(terrain_):
+		terrain = terrain_
+		modulate = Global.color.terrain[terrain]
 	get:
-		return value
+		return terrain
+@export var hazard: int:
+	set(hazard_):
+		hazard = hazard_
+		%Hazard.text = str(hazard)
+	get:
+		return hazard

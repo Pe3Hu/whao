@@ -12,6 +12,9 @@ var trails: Dictionary
 var neighbors: Dictionary
 var index: int
 var deadend_remoteness: int = -1
+var hazard: int
+var heat: float
+var terrain: String
 
 var arrow_size: Vector2 = Vector2(32, 32)
 
@@ -25,6 +28,7 @@ func set_maze(maze_: MazeResource) -> CrossroadResource:
 	index = maze.crossroads.size()
 	maze.crossroads.append(self)
 	maze.grids[grid] = self
+	heat = maze.noise.get_noise_2dv(grid)
 	return self
 	
 func inactive_all_outputs() -> void:
@@ -91,3 +95,13 @@ func set_new_origin(options_: Array) -> void:
 	
 func get_manhattan_distance(crossroad_: CrossroadResource) -> int:
 	return abs(grid.x - crossroad_.grid.x) + abs(grid.y - crossroad_.grid.y)
+	
+func roll_hazard() -> void:
+	var description = Global.dict.crossroad.remoteness[deadend_remoteness]
+	hazard = int(Global.get_random_key(description.hazard)) * 10 - 5
+	
+func roll_flock() -> FlockResource:
+	var flock_resource = FlockResource.new()
+	
+	
+	return flock_resource
