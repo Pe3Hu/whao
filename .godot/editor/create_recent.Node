@@ -1,11 +1,11 @@
-GridContainer
-HBoxContainer
-TextureRect
-Sprite2D
 VBoxContainer
+PanelContainer
+TextureRect
+HBoxContainer
+GridContainer
+Sprite2D
 ScrollContainer
 NinePatchRect
-PanelContainer
 Node2D
 Control
 MeshInstance2D

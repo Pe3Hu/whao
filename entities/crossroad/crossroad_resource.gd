@@ -16,7 +16,8 @@ var hazard: int
 var heat: float
 var terrain: String
 
-var arrow_size: Vector2 = Vector2(32, 32)
+const arrow_size: Vector2 = Vector2(32, 32)
+const hazard_range = 4
 
 
 func set_grid(grid_: Vector2) -> CrossroadResource:
@@ -97,11 +98,9 @@ func get_manhattan_distance(crossroad_: CrossroadResource) -> int:
 	return abs(grid.x - crossroad_.grid.x) + abs(grid.y - crossroad_.grid.y)
 	
 func roll_hazard() -> void:
+	if deadend_remoteness > maze.limit_deadend_remoteness - 1:
+		deadend_remoteness = maze.limit_deadend_remoteness - 1
+		print("deadend_remoteness fail")
+	
 	var description = Global.dict.crossroad.remoteness[deadend_remoteness]
 	hazard = int(Global.get_random_key(description.hazard)) * 10 - 5
-	
-func roll_flock() -> FlockResource:
-	var flock_resource = FlockResource.new()
-	
-	
-	return flock_resource

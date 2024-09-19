@@ -6,7 +6,9 @@
   "hazard 3": 10,
   "rarity common": 80,
   "rarity uncommon": 15,
-  "rarity rare": 5
+  "rarity rare": 5,
+  "level 1": 80,
+  "level 2": 20
  },
  {
   "remoteness": 1,
@@ -18,7 +20,10 @@
   "rarity uncommon": 30,
   "rarity rare": 10,
   "rarity epic": 4,
-  "rarity legendary": 1
+  "rarity legendary": 1,
+  "level 0": 30,
+  "level 1": 40,
+  "level 2": 30
  },
  {
   "remoteness": 2,
@@ -29,7 +34,11 @@
   "rarity uncommon": 40,
   "rarity rare": 15,
   "rarity epic": 10,
-  "rarity legendary": 5
+  "rarity legendary": 5,
+  "level -1": 15,
+  "level 0": 20,
+  "level 1": 35,
+  "level 2": 30
  },
  {
   "remoteness": 3,
@@ -40,7 +49,10 @@
   "rarity uncommon": 35,
   "rarity rare": 20,
   "rarity epic": 15,
-  "rarity legendary": 10
+  "rarity legendary": 10,
+  "level -1": 20,
+  "level 0": 50,
+  "level 1": 30
  },
  {
   "remoteness": 4,
@@ -52,7 +64,11 @@
   "rarity uncommon": 30,
   "rarity rare": 25,
   "rarity epic": 20,
-  "rarity legendary": 15
+  "rarity legendary": 15,
+  "level -1": 30,
+  "level 0": 40,
+  "level 1": 20,
+  "level 2": 10
  },
  {
   "remoteness": 5,
@@ -63,7 +79,11 @@
   "rarity uncommon": 25,
   "rarity rare": 30,
   "rarity epic": 25,
-  "rarity legendary": 20
+  "rarity legendary": 20,
+  "level -1": 25,
+  "level 0": 25,
+  "level 1": 25,
+  "level 2": 25
  },
  {
   "remoteness": 6,
@@ -74,7 +94,11 @@
   "rarity uncommon": 10,
   "rarity rare": 35,
   "rarity epic": 30,
-  "rarity legendary": 25
+  "rarity legendary": 25,
+  "level -2": 15,
+  "level -1": 15,
+  "level 0": 25,
+  "level 1": 45
  },
  {
   "remoteness": 7,
@@ -85,7 +109,11 @@
   "hazard 9": 10,
   "rarity rare": 40,
   "rarity epic": 30,
-  "rarity legendary": 30
+  "rarity legendary": 30,
+  "level -1": 40,
+  "level 0": 20,
+  "level 1": 40,
+  "level 2": 10
  },
  {
   "remoteness": 8,
@@ -95,7 +123,11 @@
   "hazard 9": 30,
   "rarity rare": 30,
   "rarity epic": 30,
-  "rarity legendary": 40
+  "rarity legendary": 40,
+  "level -2": 20,
+  "level -1": 30,
+  "level 0": 30,
+  "level 1": 20
  },
  {
   "remoteness": 9,
@@ -104,6 +136,9 @@
   "hazard 9": 70,
   "rarity rare": 20,
   "rarity epic": 30,
-  "rarity legendary": 50
+  "rarity legendary": 50,
+  "level -2": 10,
+  "level -1": 20,
+  "level 0": 70
  }
 ]

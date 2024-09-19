@@ -1,18 +1,33 @@
-[gd_scene load_steps=4 format=3 uid="uid://b87qrflqy2l2w"]
+[gd_scene load_steps=5 format=3 uid="uid://b87qrflqy2l2w"]
 
-[ext_resource type="Texture2D" uid="uid://bwaqdxks7q6pf" path="res://entities/milestone/images/milestone.png" id="2_gnrub"]
+[ext_resource type="Texture2D" uid="uid://w7hoapaniov6" path="res://entities/milestone/images/milestone.png" id="2_gnrub"]
 [ext_resource type="Script" path="res://entities/milestone/milestone.gd" id="2_tbc2p"]
 [ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://assets/fonts/digital/Inter-Black.ttf" id="4_hv02a"]
 
-[node name="Milestone" type="TextureRect"]
-offset_right = 64.0
-offset_bottom = 64.0
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ujcib"]
+
+[node name="Milestone" type="PanelContainer"]
+offset_right = 32.0
+offset_bottom = 32.0
 size_flags_horizontal = 4
 size_flags_vertical = 6
-texture = ExtResource("2_gnrub")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ujcib")
 script = ExtResource("2_tbc2p")
 
-[node name="Hazard" type="Label" parent="."]
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Crossroad" type="TextureRect" parent="VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_gnrub")
+
+[node name="Hazard" type="Label" parent="VBox/Crossroad"]
 unique_name_in_owner = true
 z_index = 1
 custom_minimum_size = Vector2(32, 32)
@@ -22,15 +37,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -14.0
-offset_top = -12.5
-offset_right = 14.0
-offset_bottom = 12.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_hv02a")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Flocks" type="VBoxContainer" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1

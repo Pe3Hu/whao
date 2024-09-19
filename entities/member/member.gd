@@ -14,7 +14,7 @@ func set_guild(guild_: Guild) -> Member:
 	guild.members.add_child(self)
 	update_tokens()
 	return self
-
+	
 func set_squad(squad_: Squad) -> Member:
 	squad = squad_
 	squad.members.add_child(self)

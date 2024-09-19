@@ -19,7 +19,7 @@ func set_resource(resource_: StationResource) -> Station:
 	return self
 	
 func init_routes() -> void:
-	var route_resource = resource.routes[0]
+	var route_resource = resource.routes.back()
 	var route = route_scene.instantiate()
 	route.set_resource(route_resource).set_station(self)
 	

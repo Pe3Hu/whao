@@ -12,6 +12,7 @@ class_name Trail extends TextureRect
 @export var value: int:
 	set(value_):
 		value = value_
+		visible = value > 0
 		
 		if is_node_ready():
 			weight.text = str(value)

@@ -21,11 +21,6 @@ func set_resource(resource_: RouteResource) -> Route:
 	return self
 	
 func init_milestones() -> void:
-	for crossroad_resource in resource.crossroads:
+	for milestone_resource in resource.milestones:
 		var milestone = milestone_scene.instantiate()
-		milestone.hazard = crossroad_resource.hazard
-		milestone.terrain = crossroad_resource.terrain
-		%Milestones.add_child(milestone)
-		
-		var flock = flock_scene.instantiate()
-		#flock.set_crossroad(crossroad_resource).set_route(self)
+		milestone.set_resource(milestone_resource).set_route(self)

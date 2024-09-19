@@ -178,7 +178,10 @@ func init_crossroad() -> void:
 				if !data.has(words[0]):
 					data[words[0]] = {}
 				
-				data[words[0]][words[1]] = int(crossroad[key])
+				if words[0] != "rarity":
+					data[words[0]][int(words[1])] = int(crossroad[key])
+				else:
+					data[words[0]][words[1]] = int(crossroad[key])
 		
 		dict.crossroad.remoteness[crossroad.remoteness] = data
 	
@@ -249,6 +252,17 @@ func init_color():
 	color.terrain["plain"] = Color.from_hsv(80 / h, 0.7, 0.7)
 	color.terrain["mountain"] = Color.from_hsv(180 / h, 0.3, 0.6)
 	color.terrain["tundra"] = Color.from_hsv(230 / h, 0.4, 0.6)
+	
+	color.totem = {}
+	color.totem["cougar"] = Color.from_hsv(30 / h, 0.9, 0.6)
+	color.totem["bear"] = Color.from_hsv(0 / h, 0.9, 0.6)
+	color.totem["wolf"] = Color.from_hsv(330 / h, 0.9, 0.6)
+	color.totem["turtle"] = Color.from_hsv(90 / h, 0.9, 0.6)
+	color.totem["cobra"] = Color.from_hsv(120 / h, 0.9, 0.6)
+	color.totem["crocodile"] = Color.from_hsv(150 / h, 0.9, 0.6)
+	color.totem["raven"] = Color.from_hsv(195 / h, 0.9, 0.6)
+	color.totem["owl"] = Color.from_hsv(210 / h, 0.9, 0.6)
+	color.totem["hawk"] = Color.from_hsv(225 / h, 0.9, 0.6)
 	
 func save(path_: String, data_: String):
 	var path = path_ + ".json"
