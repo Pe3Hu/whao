@@ -185,6 +185,21 @@ func init_crossroad() -> void:
 		
 		dict.crossroad.remoteness[crossroad.remoteness] = data
 	
+	dict.egg = {}
+	dict.egg.hazard = {}
+	
+	for level in range(1, 10, 1):
+		for rarity in Global.arr.rarity:
+			var hazard = level * (Global.arr.rarity.find(rarity) + 1)
+			var egg = {}
+			egg.level = level
+			egg.rarity = rarity
+			
+			if !dict.egg.hazard.has(hazard):
+				dict.egg.hazard[hazard] = []
+			
+			dict.egg.hazard[hazard].append(egg)
+	
 func init_item() -> void:
 	dict.item = {}
 	dict.item.title = {}

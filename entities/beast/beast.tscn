@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c6hu1xtn8jpll" path="res://entities/totem/totem.tscn" id="2_rwoxp"]
 [ext_resource type="Material" uid="uid://brwvgxqtaxjep" path="res://entities/token/materials/fang.tres" id="3_cg8u2"]
 [ext_resource type="Texture2D" uid="uid://cyf73vkq8n7jj" path="res://entities/totem/images/raven.png" id="3_us0o2"]
-[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/token/token.tscn" id="4_1e300"]
+[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/trail/trail.tscn" id="4_1e300"]
 [ext_resource type="Texture2D" uid="uid://bl4q2ukhbjgx7" path="res://entities/token/images/fang.png" id="4_hmbj0"]
 [ext_resource type="Material" uid="uid://jaxghko8lwa1" path="res://entities/token/materials/claw.tres" id="5_745kv"]
 [ext_resource type="Texture2D" uid="uid://cbv7mmx5wbdc1" path="res://entities/token/images/claw.png" id="6_p1ysr"]
@@ -47,21 +47,18 @@ unique_name_in_owner = true
 material = ExtResource("7_80gr4")
 layout_mode = 2
 texture = ExtResource("8_jggfc")
-type = "fury"
 
 [node name="Cunning" parent="VBox/Defenses" instance=ExtResource("4_1e300")]
 unique_name_in_owner = true
 material = ExtResource("9_3iftm")
 layout_mode = 2
 texture = ExtResource("10_r7464")
-type = "cunning"
 
 [node name="Wisdom" parent="VBox/Defenses" instance=ExtResource("4_1e300")]
 unique_name_in_owner = true
 material = ExtResource("11_fjseq")
 layout_mode = 2
 texture = ExtResource("12_317qn")
-type = "wisdom"
 
 [node name="Offenses" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
@@ -75,14 +72,12 @@ unique_name_in_owner = true
 material = ExtResource("3_cg8u2")
 layout_mode = 2
 texture = ExtResource("4_hmbj0")
-type = "fang"
 
 [node name="Claw" parent="VBox/Offenses" instance=ExtResource("4_1e300")]
 unique_name_in_owner = true
 material = ExtResource("5_745kv")
 layout_mode = 2
 texture = ExtResource("6_p1ysr")
-type = "claw"
 
 [node name="Supports" type="HBoxContainer" parent="VBox"]
 layout_mode = 2
@@ -96,4 +91,3 @@ unique_name_in_owner = true
 material = ExtResource("14_2mrp0")
 layout_mode = 2
 texture = ExtResource("15_stvwq")
-type = "extraction"

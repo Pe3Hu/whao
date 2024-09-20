@@ -1,24 +1,17 @@
-res://entities/station/station.tscn
-res://shaders/gradient effects.gdshader
 res://entities/route/route.tscn
-res://entities/crossroad/crossroad.tscn
-res://entities/beast/beast.tscn
-res://entities/flock/flock.tscn
+res://shaders/gradient effects.gdshader
 res://entities/planet/planet.tscn
+res://entities/flock/flock.tscn
+res://entities/beast/beast.tscn
 res://entities/totem/totem.tscn
-res://entities/milestone/milestone.gd
-res://entities/totem/totem.gd
 res://entities/milestone/milestone.tscn
-res://script/Global.gd
-res://entities/trail/trail.tscn
-res://entities/trail/trail.gd
-res://entities/member/member.tscn
-res://entities/member/member.gd
-res://entities/milestone/milestone_resource.gd
-res://entities/crossroad/crossroad_resource.gd
-res://entities/route/route_resource.gd
-res://entities/route/route.gd
-res://entities/flock/flock.gd
-res://entities/flock/flock_resource.gd
+res://entities/station/station.tscn
 res://entities/maze/maze.tscn
+res://entities/trail/trail.tscn
+res://entities/flock/flock_resource.gd
 res://entities/station/station.gd
+res://entities/station/station_resource.gd
+res://entities/planet/planet.gd
+res://entities/maze/maze.gd
+res://script/Global.gd
+res://entities/world/world.gd
