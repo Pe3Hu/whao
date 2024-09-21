@@ -1,6 +1,7 @@
 class_name CrossroadResource extends Resource
 
 
+#region vars
 var maze: MazeResource:
 	set = set_maze
 var grid: Vector2:
@@ -18,6 +19,7 @@ var terrain: String
 
 const arrow_size: Vector2 = Vector2(32, 32)
 const hazard_range = 4
+#endregion
 
 
 func set_grid(grid_: Vector2) -> CrossroadResource:

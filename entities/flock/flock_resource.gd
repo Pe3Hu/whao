@@ -3,6 +3,7 @@ class_name FlockResource extends Resource
 
 var milestone: MilestoneResource:
 	set = set_milestone
+var beasts: Array[BeastResource]
 
 var eggs: Dictionary
 var limit_hazard: int
@@ -20,10 +21,26 @@ func set_milestone(milestone_: MilestoneResource) -> FlockResource:
 	
 func roll_hazard() -> void:
 	limit_hazard = randi_range(milestone.crossroad.hazard - milestone.crossroad.hazard_range, milestone.crossroad.hazard + milestone.crossroad.hazard_range)
-	fill_beasts()
+	init_beast()
 	
-func fill_beasts() -> void:
-	#print(limit_hazard)
+func init_beast() -> void:
+	fill_eggs()
+	
+	var levels = eggs.keys()
+	levels.sort_custom(func(a, b): return a > b)
+	
+	for level in levels:
+		var rarities = eggs[level].keys()
+		rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
+		
+		for rarity in rarities:
+			var beast_resource = BeastResource.new()
+			beast_resource.level = level
+			beast_resource.rarity = rarity
+			beast_resource.kind = Global.get_random_key(Global.dict.terrain.title[milestone.crossroad.terrain])
+			beast_resource.flock = self
+	
+func fill_eggs() -> void:
 	#if milestone.route.milestones.find(milestone) == 1:
 	
 	add_leader()
@@ -33,34 +50,47 @@ func fill_beasts() -> void:
 	
 	#for level in eggs:
 		#eggs[level].sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
-	
-	print(milestone.crossroad.hazard + milestone.crossroad.hazard_range, "_", current_hazard)
+	#milestone.crossroad.hazard + milestone.crossroad.hazard_range
 	while current_eggs > limit_eggs:
 		swallow_an_egg()
 	
-	while current_hazard > milestone.crossroad.hazard + milestone.crossroad.hazard_range:
+	while current_hazard > limit_hazard:
 		balance_eggs()
 	
-	var levels = eggs.keys()
-	levels.sort_custom(func(a, b): return a > b)
-	var hazard_check = 0
+	expand_eggs()
+	#print(["before", limit_hazard - current_hazard, limit_hazard, current_hazard])
+	#print(eggs)
+	var flag_shift = different_shift()
 	
-	for level in levels:
-		var rarities = eggs[level].keys()
-		rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
-		
-		for rarity in rarities:
-			hazard_check += eggs[level][rarity] * level * (Global.arr.rarity.find(rarity) + 1)
-			print([level, rarity, eggs[level][rarity]])
+	while flag_shift:
+		flag_shift = different_shift()
 	
-	print([milestone.crossroad.deadend_remoteness, "_____", limit_hazard, current_hazard, hazard_check, current_eggs])
+	flag_shift = equal_shift()
+	
+	while flag_shift:
+		flag_shift = equal_shift()
+	
+	#print(["after", limit_hazard - current_hazard, limit_hazard, current_hazard])
+	#print(eggs)
+	#var levels = eggs.keys()
+	#levels.sort_custom(func(a, b): return a > b)
+	#
+	#for level in levels:
+		#var rarities = eggs[level].keys()
+		#rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
+		#
+		#for rarity in rarities:
+			#print([level, rarity, eggs[level][rarity]])
 	
 	if current_eggs > limit_eggs:
-		print("fail")
-		#print([egg.level, egg.rarity])
+		print("fail limit_eggs")
+	
+	if limit_hazard != current_hazard:
+		limit_hazard = current_hazard
+		#print([milestone.crossroad.deadend_remoteness, "fail hazard", current_hazard, limit_hazard, eggs])
 	
 func add_leader() -> void:
-	var hazard = ceil(limit_hazard / 2)
+	var hazard = ceil(int(limit_hazard / 2))
 	hazard += limit_hazard % 2
 	
 	var egg_size = 3
@@ -88,7 +118,6 @@ func add_leader() -> void:
 	
 	hazard_shift -= 1
 	var egg = _eggs.pick_random()
-	#print([egg, hazard - hazard_shift, hazard, hazard + hazard_shift, _eggs])
 	eggs[egg.level] = {}
 	eggs[egg.level][egg.rarity] = 1
 	current_eggs += 1
@@ -114,8 +143,7 @@ func increase_hazard() -> void:
 func swallow_an_egg() -> void:
 	var egg = get_egg("worst")
 	egg.count = -1
-	print(["swallow", egg])
-	exchange_eggs(egg)
+	change_eggs(egg)
 	
 func get_egg(extreme_: String) -> Dictionary:
 	var hazards = []
@@ -137,7 +165,7 @@ func get_egg(extreme_: String) -> Dictionary:
 	var options = hazards.filter(func (a): return a.hazard == hazards.back().hazard)
 	return options.pick_random()
 	
-func exchange_eggs(egg_: Dictionary) -> void:
+func change_eggs(egg_: Dictionary) -> void:
 	current_eggs += egg_.count
 	
 	if egg_.count > 0:
@@ -151,250 +179,161 @@ func exchange_eggs(egg_: Dictionary) -> void:
 	current_hazard += egg_.level * (Global.arr.rarity.find(egg_.rarity) + 1) * egg_.count
 	
 	if egg_.count < 0:
-		if eggs[egg_.level][egg_.rarity] == 0:
+		if eggs[egg_.level][egg_.rarity] <= 0:
 			eggs[egg_.level].erase(egg_.rarity)
 		
-		if eggs[egg_.level].keys().is_empty:
+		if eggs[egg_.level].keys().size() == 0:
 			eggs.erase(egg_.level)
 	
-	print(current_hazard)
-	
 func balance_eggs() -> void:
-	var egg
-	
-	egg = get_egg("best")
+	var egg = get_egg("best")
 	egg.count = -1
-	#if limit_hazard > current_hazard:
-	#else:
-		#egg = get_egg("worst")
+	change_eggs(egg)
+	egg.count = 1
+	egg.erase("hazard")
+	
+	if Global.dict.rarity.previous.has(egg.rarity):
+		egg.rarity = Global.dict.rarity.previous[egg.rarity]
+	else:
+		egg.level = egg.level - 1
+	
+	if egg.level > 0:
+		change_eggs(egg)
+	
+func different_shift() -> bool:
+	if limit_hazard - current_hazard == 0:
+		return false
+	
+	var level_gaps = {}
+	
+	for min_level in eggs:
+		for max_level in range(min_level + 1, 10, 1):
+			if eggs.has(max_level):
+				var level_gap = max_level - min_level
+				
+				if abs(limit_hazard - current_hazard) >= level_gap:
+					var gap = {}
+					gap.min = {}
+					gap.min.level = min_level
+					gap.min.rarities = eggs[min_level].keys().filter(func (a): return Global.dict.rarity.previous.has(a))
+					gap.max = {}
+					gap.max.level = max_level
+					gap.max.rarities = eggs[max_level].keys().filter(func (a): return Global.dict.rarity.next.has(a))
+					
+					if !gap.min.rarities.is_empty() and !gap.max.rarities.is_empty():
+						gap.min.rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
+						gap.max.rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
+						
+						if !level_gaps.has(level_gap):
+							level_gaps[level_gap] = []
+						
+						level_gaps[level_gap].append(gap)
+	
+	if level_gaps.keys().is_empty():
+		return false
+	else:
+		var gaps = level_gaps.keys()
+		gaps.sort()
+		var level_gap = gaps.back()
+		var gap = level_gaps[level_gap].pick_random()
+		#print(limit_hazard - current_hazard, gap)
+		var egg = {}
+		egg.level = gap.min.level
+		egg.rarity = gap.min.rarities.back()#.pick_random()
+		swap_egg_rarity("previous", egg)
+		egg.level = gap.max.level
+		egg.rarity = gap.max.rarities.front()
+		swap_egg_rarity("next", egg)
+		
+		#egg.rarity = gap.min.rarities.back()#.pick_random()
+		#egg.count = -1
+		#change_eggs(egg)
+		#
+		#egg.level = gap.max.level
+		#gap.max.rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
+		#egg.rarity = gap.max.rarities.front()#.pick_random()
+		#change_eggs(egg)
+		#
+		#egg.rarity = Global.dict.rarity.next[egg.rarity]
 		#egg.count = 1
-	#
-	exchange_eggs(egg)
-	print(["balance -1", egg])
+		#change_eggs(egg)
+		#
+		#egg.level = gap.min.level
+		#egg.rarity = Global.dict.rarity.previous[egg.rarity]
+		#change_eggs(egg)
+		
+		return true
 	
-	if egg.rarity != Global.arr.rarity.front():
-		var index = Global.arr.rarity.find(egg.rarity) - 1
-		egg.rarity = Global.arr.rarity[index]
+func equal_shift() -> bool:
+	if limit_hazard - current_hazard == 0:
+		return false
+	
+	var level_gaps = {}
+	
+	for min_level in eggs:
+		for max_level in range(min_level + 1, 10, 1):
+			if eggs.has(max_level):
+				var level_gap = max_level - min_level
+				
+				if abs(limit_hazard - current_hazard) >= level_gap:
+					var gap = {}
+					gap.min = {}
+					gap.min.level = min_level
+					gap.min.rarities = eggs[min_level].keys()
+					gap.max = {}
+					gap.max.level = max_level
+					gap.max.rarities = eggs[max_level].keys().filter(func (a): return gap.min.rarities.has(a))
+					
+					if !gap.min.rarities.is_empty() and !gap.max.rarities.is_empty():
+						if !level_gaps.has(level_gap):
+							level_gaps[level_gap] = []
+						
+						level_gaps[level_gap].append(gap)
+	
+	if level_gaps.keys().is_empty():
+		return false
+	else:
+		var gaps = level_gaps.keys()
+		gaps.sort()
+		var level_gap = gaps.back()
+		var gap = level_gaps[level_gap].pick_random()
+		var rarity = gap.max.rarities.pick_random()
+		swap_equal_rarity(rarity, gap.min.level, gap.max.level)
+		#print(limit_hazard - current_hazard, gap)
+		return true
+	
+func swap_egg_rarity(order_: String, egg_: Dictionary) -> void:
+	egg_.count = -1
+	change_eggs(egg_)
+	egg_.count = 1
+	egg_.rarity = Global.dict.rarity[order_][egg_.rarity]
+	change_eggs(egg_)
+	
+func swap_equal_rarity(rarity_: String, min_level_: int, max_level_: int) -> void:
+	var egg = {}
+	egg.level = min_level_
+	egg.rarity = rarity_
+	egg.count = -1
+	change_eggs(egg)
+	egg.level = max_level_
+	egg.count = 1
+	change_eggs(egg)
+	
+func expand_eggs() -> void:
+	if limit_hazard > current_hazard and current_eggs < limit_eggs:
+		var hazard_gap = limit_hazard - current_hazard
+		var egg = {}
+		egg.rarity = "common"
 		egg.count = 1
-		egg.erase("hazard")
-		exchange_eggs(egg)
-		print(["balance 1", egg])
-	
-	print([eggs])
-
-#func swallow_an_egg() -> void:
-	#print("swallow")
-	#var donor = {}
-	#donor.level = eggs.keys().front()
-	#donor.rarity = eggs[donor.level].keys().front()
-	#donor.repeat = eggs[donor.level][donor.rarity]
-	#donor.count = 2
-	#var recipient = {}
-	#recipient.count = 1
-	#
-	#for level in eggs:
-		#for rarity in eggs[level]:
-			#if donor.repeat < eggs[level][rarity]:
-				#donor.level = level
-				#donor.rarity = rarity
-				#donor.repeat = eggs[donor.level][donor.rarity]
-	#
-	#if donor.rarity != Global.arr.rarity.back() and donor.repeat > 1:
-		#current_eggs -= 1
-		#var index = Global.arr.rarity.find(donor.rarity) + 1
-		#
-		#if limit_hazard - current_hazard < 0:
-			#if donor.rarity != Global.arr.rarity.front():
-				#index = Global.arr.rarity.find(donor.rarity) - 1
-			#else:
-				#donor.count = 2
-				#index = 0
-		#
-		#recipient.level = donor.level
-		#recipient.rarity = Global.arr.rarity[index]
-		#
-		#exchange_eggs(donor, recipient)
-	#else:
-		#var options = []
-		#
-		#for level in eggs:
-			#for rarity in eggs[level]:
-				#if rarity != "legendary":
-					#var option = {}
-					#option.level = level
-					#option.rarity = rarity
-					#option.count = 1
-					#options.append(option)
-		#
-		#donor = options.pick_random()
-		#options.erase(donor)
-		#recipient = options.pick_random()
-	#
-		#exchange_eggs(donor, recipient)
-	#
-#func balance_egg() -> void:
-	#print("balance")
-	#var balance = limit_hazard - current_hazard
-	#
-	#if eggs.has(abs(balance)):
-		#var level = abs(balance)
-		#var rarities = eggs[level].keys()
-		#rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
-		#
-		#if rarities.size() > 1:
-			#change_single_rarity(balance)
-		#else:
-			#var levels = eggs.keys().filter(func(a): return eggs[a].keys().size() > 1)
-			#
-			#if levels.is_empty():
-				#eggs_balance_convergence(balance)
-			#else:
-				#level = levels.pick_random()
-				#var _balance = sign(balance) * level
-				#change_single_rarity(_balance)
-	#else:
-		#eggs_balance_convergence(balance)
-		#
-#func change_single_rarity(balance_: int) -> void:
-	#print("change_single")
-	#var level = abs(balance_)
-	#var rarities = eggs[level].keys()
-	#rarities.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
-	#
-	#var donor = {}
-	#var recipient = {}
-	#var index
-	#
-	#if balance_ < 0:
-		#donor.rarity = rarities.back()
-		#index = Global.arr.rarity.find(donor.rarity) - 1
-	#else:
-		#donor.rarity = rarities.front()
-		#index = Global.arr.rarity.find(donor.rarity) + 1
-#
-	#recipient.rarity = Global.arr.rarity[index]
-	#recipient.level = level
-	#donor.level = level
-	#donor.count = 1
-	#recipient.count = 1
-	#exchange_eggs(donor, recipient)
-	#
-#func eggs_balance_convergence(balance_: int) -> void:
-	#print("convergence")
-	#var donor = {}
-	#var recipient = {}
-	#donor.count = 1
-	#recipient.count = 1
-	#
-	#if eggs.keys().size() == 1:
-		#shift_single_level(eggs.keys().front())
-	#else:
-		#var step = limit_hazard - current_hazard
-		#var steps = {}
-		#var levels = eggs.keys()
-		#levels.sort()
-		#
-		#for _i in levels.size():
-			#for _j in range(_i + 1, levels.size(), 1):
-				#var _step = levels[_i] - levels[_j]
-				#
-				#if balance_ > 0:
-					#var rarity_i = get_rarity("worst", eggs[levels[_i]].keys())
-					#var rarity_j = get_rarity("best", eggs[levels[_j]].keys())
-					#
-					#if rarity_i != Global.arr.rarity.back() and rarity_j != Global.arr.rarity.front():
-						#if !steps.has(_step):
-							#steps[_step] = []
-							#
-						#steps[_step].append([levels[_i], levels[_j]])
-				#else:
-					#var rarity_i = get_rarity("best", eggs[levels[_i]].keys())
-					#var rarity_j = get_rarity("worst", eggs[levels[_j]].keys())
-					#
-					#if rarity_j != Global.arr.rarity.back() and rarity_i != Global.arr.rarity.front():
-						#if !steps.has(_step):
-							#steps[_step] = []
-						#
-						#steps[_step].append([levels[_i], levels[_j]])
-		#
-		#if !steps.has(step):
-			#var weights = {}
-			#var max_shift = 0
-			#
-			#for _step in steps:
-				#if max_shift < abs(_step - step):
-					#max_shift = abs(_step - step)
-			#
-			#for _step in steps:
-				#weights[_step] = (max_shift + 1) - abs(_step - step)
-			#
-			#step = Global.get_random_key(weights)
-		#
-		#if step == null:
-			#shift_single_level(levels.front())
-		#else:
-			#var pair = steps[step].pick_random()
-			#
-			#if balance_ > 0:
-				#donor.level = pair.back()
-				#recipient.level = pair.front()
-				#donor.rarity = get_rarity("worst", eggs[donor.level].keys())
-				#recipient.rarity = get_rarity("best", eggs[recipient.level].keys())
-			#else: 
-				#donor.level = pair.front()
-				#recipient.level = pair.back()
-				#donor.rarity = get_rarity("best", eggs[donor.level].keys())
-				#recipient.rarity = get_rarity("worst", eggs[recipient.level].keys())
-		#
-			#exchange_eggs(donor, recipient)
-	#
-#func get_rarity(extreme_: String, rarities_: Array) -> String:
-	#rarities_.sort_custom(func(a, b): return Global.arr.rarity.find(a) > Global.arr.rarity.find(b))
-	#var rarity
-	#
-	#match extreme_:
-		#"best":
-			#rarity = rarities_.front()
-		#"worst":
-			#rarity = rarities_.back()
-	#
-	#return rarity
-	#
-#func exchange_eggs(donor_: Dictionary, recipient_: Dictionary) -> void:
-	#eggs[donor_.level][donor_.rarity] -= donor_.count
-	#current_hazard -= donor_.level * (Global.arr.rarity.find(donor_.rarity) + 1) * donor_.count
-	#
-	#if eggs[donor_.level][donor_.rarity] == 0:
-		#eggs[donor_.level].erase(donor_.rarity)
-	#
-	#if eggs[donor_.level].keys().is_empty:
-		#eggs.erase(donor_.level)
-	#
-	#if !eggs.has(recipient_.level):
-		#eggs[recipient_.level] = {}
-	#
-	#if !eggs[recipient_.level].has(recipient_.rarity):
-		#eggs[recipient_.level][recipient_.rarity] = 0
-	#
-	#eggs[recipient_.level][recipient_.rarity] += recipient_.count
-	#current_hazard += recipient_.level * (Global.arr.rarity.find(recipient_.rarity) + 1) * donor_.count
-	#print(["exchange_eggs", limit_hazard, current_hazard, donor_, recipient_, current_eggs])
-	#
-#func shift_single_level(level_: int) -> void:
-	#var donor = {}
-	#var recipient = {}
-	#donor.count = 1
-	#recipient.count = 1
-	#donor.level = level_
-	#recipient.level = level_
-	#
-	#if limit_hazard - current_hazard < 0:
-		#donor.rarity = get_rarity("worst", eggs[donor.level].keys()) 
-		#var index = Global.arr.rarity.find(donor.rarity) + 1
-		#recipient.rariry = Global.arr.rarity[index]
-	#else:
-		#donor.rarity = get_rarity("best", eggs[donor.level].keys()) 
-		#var index = Global.arr.rarity.find(donor.rarity) - 1
-		#recipient.rariry = Global.arr.rarity[index]
-	#
-	#exchange_eggs(donor, recipient)
+		egg.gap = INF
+		
+		for _i in range(-2, 3, 1):
+			var level = milestone.crossroad.deadend_remoteness + _i
+			var gap = abs(level - hazard_gap)
+			
+			if egg.gap > gap and hazard_gap >= level:
+				egg.gap = gap
+				egg.level = level
+		
+		if egg.has("level"):
+			change_eggs(egg)

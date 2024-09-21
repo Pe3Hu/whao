@@ -12,8 +12,16 @@ class_name Milestone extends PanelContainer
 	set(hazard_):
 		hazard = hazard_
 		%Hazard.text = str(hazard)
+		%Hazard.visible = true
 	get:
 		return hazard
+@export var index: int:
+	set(index_):
+		index = index_
+		%Index.text = str(index)
+		%Index.visible = true
+	get:
+		return index
 
 @onready var flock_scene = preload("res://entities/flock/flock.tscn")
 
@@ -27,9 +35,10 @@ func set_route(route_: Route) -> Milestone:
 	route = route_
 	route.get_node("%Milestones").add_child(self)
 	
-	hazard = resource.crossroad.hazard
+	#hazard = resource.crossroad.hazard
+	index = resource.crossroad.index
 	terrain = resource.crossroad.terrain
-	add_flock()
+	#add_flock()
 	return self
 	
 func set_resource(resource_: MilestoneResource) -> Milestone:

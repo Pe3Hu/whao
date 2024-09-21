@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://entities/flock/flock.gd" id="1_yl55p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
-bg_color = Color(0.807017, 0.464501, 0.712073, 1)
+bg_color = Color(0.136, 0.068, 0.17, 0.713726)
 
 [node name="Flock" type="PanelContainer"]
 custom_minimum_size = Vector2(64, 64)

@@ -13,6 +13,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ujcib")
 script = ExtResource("2_tbc2p")
+index = null
 
 [node name="VBox" type="VBoxContainer" parent="."]
 layout_mode = 2
@@ -29,6 +30,31 @@ texture = ExtResource("2_gnrub")
 
 [node name="Hazard" type="Label" parent="VBox/Crossroad"]
 unique_name_in_owner = true
+visible = false
+z_index = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_hv02a")
+theme_override_font_sizes/font_size = 16
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Index" type="Label" parent="VBox/Crossroad"]
+unique_name_in_owner = true
+visible = false
 z_index = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1

@@ -7,12 +7,15 @@ var maze: MazeResource
 
 var roots: Dictionary
 var routes: Array[RouteResource]
+var awards: Dictionary
 
 
 func set_planet(planet_: PlanetResource) -> StationResource:
 	planet = planet_
 	maze = planet.maze
 	init_roots()
+	init_awards()
+	calc_routes_award()
 	return self
 	
 func init_roots() -> void:
@@ -54,3 +57,43 @@ func init_roots() -> void:
 				if end.trails.keys().filter(func(a): return a.is_active).size() == 1:
 					var route = RouteResource.new()
 					route.set_crossroads(crossroads).set_station(self)
+	
+func init_awards() -> void:
+	var beasts = []
+	var prizes = [8, 5, 3]
+	var options = Global.dict.beast.title.keys()
+	options.shuffle()
+	
+	while beasts.size() < prizes.size():
+		var beast = options.pop_back()
+		beasts.append(beast)
+	
+	for _i in beasts.size():
+		awards[beasts[_i]] = prizes[_i]
+	
+func calc_routes_award() -> void:
+	var weights = {}
+	
+	for terrain in Global.dict.terrain.beast:
+		weights[terrain] = 0
+		var shares = Global.dict.terrain.beast[terrain]
+		var total = Global.dict.terrain.total[terrain]
+		
+		for beast in awards:
+			if shares.has(beast):
+				var share = float(shares[beast]) / total
+				weights[terrain] += share * awards[beast]
+	
+	var terrains = weights.keys()
+	terrains.sort_custom(func(a, b): return weights[a] > weights[b])
+	
+	for terrain in terrains:
+		print([terrain, weights[terrain]])
+	
+	for route in routes:
+		route.award = 0
+		
+		for milestone in route.milestones:
+			route.award += weights[milestone.crossroad.terrain]
+	
+	routes.sort_custom(func(a, b): return a.award > b.award)

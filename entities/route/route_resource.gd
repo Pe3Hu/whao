@@ -6,6 +6,7 @@ var station: StationResource:
 var crossroads: Array:
 	set = set_crossroads
 var milestones: Array[MilestoneResource]
+var award: int
 
 
 func set_station(station_: StationResource) -> RouteResource:

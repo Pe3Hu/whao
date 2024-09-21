@@ -8,8 +8,7 @@ var profession: String:
 	set = set_profession
 
 var current_claw: int
-var maximum_claw: int:
-	set = set_maximum_claw
+var maximum_claw: int
 var current_fang: int
 var maximum_fang: int
 
@@ -47,6 +46,3 @@ func set_guild(guild_: GuildResource) -> MemberResource:
 	guild = guild_
 	guild.members.append(self)
 	return self
-	
-func set_maximum_claw(maximum_claw_: int) -> void:
-	maximum_claw = maximum_claw_

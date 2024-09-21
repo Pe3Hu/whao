@@ -39,10 +39,41 @@ func init_num() -> void:
 func init_dict() -> void:
 	init_direction()
 	init_corner()
+	init_also()
 	
 	init_profession()
 	init_item()
 	init_crossroad()
+	init_beast()
+	
+func init_also() -> void:
+	dict.egg = {}
+	dict.egg.hazard = {}
+	
+	for level in range(1, 10, 1):
+		for rarity in Global.arr.rarity:
+			var hazard = level * (Global.arr.rarity.find(rarity) + 1)
+			var egg = {}
+			egg.level = level
+			egg.rarity = rarity
+			
+			if !dict.egg.hazard.has(hazard):
+				dict.egg.hazard[hazard] = []
+			
+			dict.egg.hazard[hazard].append(egg)
+	
+	dict.rarity = {}
+	dict.rarity.next = {}
+	dict.rarity.next["common"] = "uncommon"
+	dict.rarity.next["uncommon"] = "rare"
+	dict.rarity.next["rare"] = "epic"
+	dict.rarity.next["epic"] = "legendary"
+	
+	dict.rarity.previous = {}
+	dict.rarity.previous["uncommon"] = "common"
+	dict.rarity.previous["rare"] = "uncommon"
+	dict.rarity.previous["epic"] = "rare"
+	dict.rarity.previous["legendary"] = "epic"
 	
 func init_direction() -> void:
 	dict.direction = {}
@@ -185,20 +216,46 @@ func init_crossroad() -> void:
 		
 		dict.crossroad.remoteness[crossroad.remoteness] = data
 	
-	dict.egg = {}
-	dict.egg.hazard = {}
+func init_beast() -> void:
+	dict.terrain = {}
+	dict.terrain.beast = {}
+	dict.terrain.total = {}
+	dict.beast = {}
+	dict.beast.title = {}
+	var exceptions = ["title"]
 	
-	for level in range(1, 10, 1):
-		for rarity in Global.arr.rarity:
-			var hazard = level * (Global.arr.rarity.find(rarity) + 1)
-			var egg = {}
-			egg.level = level
-			egg.rarity = rarity
+	var path = "res://entities/beast/beast.json"
+	var array = load_data(path)
+	
+	for beast in array:
+		var data = {}
+		
+		for key in beast:
+			if !exceptions.has(key):
+				var words = key.split(" ")
+				
+				if words.size() > 1:
+					if !data.has(words[0]):
+						data[words[0]] = {}
+				
+					if words[0] != "level":
+						data[words[0]][words[1]] = int(beast[key])
+					else:
+						data[words[0]][int(words[1])] = []
+						var values = beast[key].split(",")
+						
+						for value in values:
+							data[words[0]][int(words[1])].append(int(value))
+		
+		dict.beast.title[beast.title] = data
+		
+		for terrain in data.terrain:
+			if !dict.terrain.beast.has(terrain):
+				dict.terrain.beast[terrain] = {}
+				dict.terrain.total[terrain] = 0
 			
-			if !dict.egg.hazard.has(hazard):
-				dict.egg.hazard[hazard] = []
-			
-			dict.egg.hazard[hazard].append(egg)
+			dict.terrain.beast[terrain][beast.title] = data.terrain[terrain]
+			dict.terrain.total[terrain] += data.terrain[terrain]
 	
 func init_item() -> void:
 	dict.item = {}
@@ -256,7 +313,7 @@ func init_color():
 	#color.rarity["rare"] = Color.from_hsv(210 / h, 0.9, 0.3)
 	color.rarity["rare"] = Color.from_hsv(210 / h, 0.9, 0.6)
 	#color.rarity["epic"] = Color.from_hsv(300 / h, 0.7, 0.4)
-	color.rarity["epic"] = Color.from_hsv(300 / h, 0.9, 0.6)
+	color.rarity["epic"] = Color.from_hsv(270 / h, 0.9, 0.6)
 	#color.rarity["legendary"] = Color.from_hsv(50 / h, 0.8, 0.5)
 	color.rarity["legendary"] = Color.from_hsv(60 / h, 0.9, 0.8)
 	
