@@ -21,6 +21,8 @@ func set_resource(resource_: RouteResource) -> Route:
 	return self
 	
 func init_milestones() -> void:
+	%Token.value = str(int(resource.award))
+	
 	for milestone_resource in resource.milestones:
 		var milestone = milestone_scene.instantiate()
 		milestone.set_resource(milestone_resource).set_route(self)

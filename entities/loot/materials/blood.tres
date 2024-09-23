@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3habpctn10g3"]
+
+[ext_resource type="Shader" path="res://shaders/gradient effects.gdshader" id="1_al4kx"]
+
+[resource]
+shader = ExtResource("1_al4kx")
+shader_parameter/effect_filling = 1.0
+shader_parameter/angle = -45.0
+shader_parameter/keep_saturation = 0.0
+shader_parameter/keep_luminance = 0.0
+shader_parameter/color_start = Color(0.77, 0.077, 0.25025, 1)
+shader_parameter/start_pos = 0.0
+shader_parameter/color_mid = Color(1, 1, 1, 1)
+shader_parameter/mid_pos = 0.5
+shader_parameter/color_end = Color(1, 0.23, 0.16, 1)
+shader_parameter/end_pos = 1.0
+shader_parameter/midpos_enabled = false
+shader_parameter/range_start = 0.0
+shader_parameter/range_end = 1.0
+shader_parameter/range_softedge = 0.1

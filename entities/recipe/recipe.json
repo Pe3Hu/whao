@@ -1,0 +1,316 @@
+[
+ {
+  "index": 0,
+  "subtype": "dagger",
+  "type": "offense",
+  "core": "liver",
+  "twin": "paw",
+  "first count": 9,
+  "first shard": "blood"
+ },
+ {
+  "index": 1,
+  "subtype": "dagger",
+  "type": "offense",
+  "core": "liver",
+  "twin": "paw",
+  "second count": 9,
+  "second shard": "ore"
+ },
+ {
+  "index": 2,
+  "subtype": "axe",
+  "type": "offense",
+  "core": "heart",
+  "twin": "paw",
+  "second count": 4,
+  "third count": 5,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 3,
+  "subtype": "axe",
+  "type": "offense",
+  "core": "heart",
+  "twin": "paw",
+  "first count": 7,
+  "second count": 2,
+  "first shard": "blood",
+  "second shard": "ore"
+ },
+ {
+  "index": 4,
+  "subtype": "bow",
+  "type": "offense",
+  "core": "heart",
+  "twin": "paw",
+  "second count": 6,
+  "third count": 3,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 5,
+  "subtype": "bow",
+  "type": "offense",
+  "core": "heart",
+  "twin": "paw",
+  "first count": 4,
+  "second count": 5,
+  "first shard": "blood",
+  "second shard": "ore"
+ },
+ {
+  "index": 6,
+  "subtype": "staff",
+  "type": "offense",
+  "core": "brain",
+  "twin": "paw",
+  "first count": 9,
+  "first shard": "blood"
+ },
+ {
+  "index": 7,
+  "subtype": "staff",
+  "type": "offense",
+  "core": "brain",
+  "twin": "paw",
+  "third count": 9,
+  "third shard": "plant"
+ },
+ {
+  "index": 8,
+  "subtype": "bow",
+  "type": "offense",
+  "core": "liver",
+  "twin": "paw",
+  "first count": 7,
+  "third count": 2,
+  "first shard": "blood",
+  "third shard": "plant"
+ },
+ {
+  "index": 9,
+  "subtype": "bow",
+  "type": "offense",
+  "core": "liver",
+  "twin": "paw",
+  "third count": 9,
+  "third shard": "plant"
+ },
+ {
+  "index": 10,
+  "subtype": "rifle",
+  "type": "offense",
+  "core": "brain",
+  "twin": "paw",
+  "second count": 5,
+  "third count": 4,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 11,
+  "subtype": "rifle",
+  "type": "offense",
+  "core": "brain",
+  "twin": "paw",
+  "second count": 9,
+  "second shard": "ore"
+ },
+ {
+  "index": 12,
+  "subtype": "necklace",
+  "type": "support",
+  "core": "brain",
+  "twin": "jaw",
+  "first count": 4,
+  "third count": 5,
+  "first shard": "blood",
+  "third shard": "plant"
+ },
+ {
+  "index": 13,
+  "subtype": "necklace",
+  "type": "support",
+  "core": "brain",
+  "twin": "jaw",
+  "second count": 4,
+  "third count": 5,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 14,
+  "subtype": "necklace",
+  "type": "support",
+  "core": "brain",
+  "twin": "jaw",
+  "second count": 9,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 15,
+  "subtype": "ring",
+  "type": "support",
+  "core": "liver",
+  "twin": "jaw",
+  "first count": 8,
+  "second count": 1,
+  "first shard": "blood",
+  "second shard": "ore"
+ },
+ {
+  "index": 16,
+  "subtype": "ring",
+  "type": "support",
+  "core": "liver",
+  "twin": "jaw",
+  "second count": 5,
+  "third count": 4,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 17,
+  "subtype": "ring",
+  "type": "support",
+  "core": "liver",
+  "twin": "jaw",
+  "second count": 9,
+  "second shard": "ore"
+ },
+ {
+  "index": 18,
+  "subtype": "earring",
+  "type": "support",
+  "core": "heart",
+  "twin": "jaw",
+  "first count": 6,
+  "second count": 3,
+  "first shard": "blood",
+  "second shard": "ore"
+ },
+ {
+  "index": 19,
+  "subtype": "earring",
+  "type": "support",
+  "core": "heart",
+  "twin": "jaw",
+  "second count": 6,
+  "third count": 3,
+  "second shard": "ore",
+  "third shard": "plant"
+ },
+ {
+  "index": 20,
+  "subtype": "earring",
+  "type": "support",
+  "core": "heart",
+  "twin": "jaw",
+  "second count": 9,
+  "second shard": "ore"
+ },
+ {
+  "index": 21,
+  "subtype": "helmet",
+  "type": "defense",
+  "core": "brain",
+  "first count": 7,
+  "second count": 2,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 22,
+  "subtype": "helmet",
+  "type": "defense",
+  "core": "brain",
+  "first count": 2,
+  "second count": 7,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 23,
+  "subtype": "chest",
+  "type": "defense",
+  "core": "heart",
+  "first count": 7,
+  "second count": 2,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 24,
+  "subtype": "chest",
+  "type": "defense",
+  "core": "heart",
+  "first count": 2,
+  "second count": 7,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 25,
+  "subtype": "gloves",
+  "type": "defense",
+  "twin": "paw",
+  "first count": 7,
+  "second count": 2,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 26,
+  "subtype": "gloves",
+  "type": "defense",
+  "twin": "paw",
+  "first count": 2,
+  "second count": 7,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 27,
+  "subtype": "pants",
+  "type": "defense",
+  "core": "liver",
+  "first count": 7,
+  "second count": 2,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 28,
+  "subtype": "pants",
+  "type": "defense",
+  "core": "liver",
+  "first count": 2,
+  "second count": 7,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 29,
+  "subtype": "boots",
+  "type": "defense",
+  "twin": "paw",
+  "first count": 7,
+  "second count": 2,
+  "first shard": "skin",
+  "second shard": "ore"
+ },
+ {
+  "index": 30,
+  "subtype": "boots",
+  "type": "defense",
+  "twin": "paw",
+  "first count": 2,
+  "second count": 7,
+  "first shard": "skin",
+  "second shard": "ore"
+ }
+]

@@ -3,8 +3,6 @@ extends Node
 
 var rng = RandomNumberGenerator.new()
 var arr = {}
-var num = {}
-var vec = {}
 var color = {}
 var dict = {}
 var flag = {}
@@ -14,8 +12,6 @@ var scene = {}
 
 func _ready() -> void:
 	init_arr()
-	init_num()
-	init_vec()
 	init_color()
 	init_dict()
 	
@@ -33,9 +29,6 @@ func init_arr() -> void:
 	
 	arr.rarity = ["common", "uncommon", "rare", "epic", "legendary"]
 	
-func init_num() -> void:
-	num.index = {}
-	
 func init_dict() -> void:
 	init_direction()
 	init_corner()
@@ -45,6 +38,7 @@ func init_dict() -> void:
 	init_item()
 	init_crossroad()
 	init_beast()
+	init_recipe()
 	
 func init_also() -> void:
 	dict.egg = {}
@@ -290,17 +284,46 @@ func init_item() -> void:
 		dict.item.type[item.type].append(item.title)
 		dict.item.title[item.title] = data
 	
-func init_vec():
-	vec.size = {}
-	vec.size.sixteen = Vector2(16, 16)
+func init_recipe() -> void:
+	dict.recipe = {}
+	dict.recipe.index = {}
+	var exceptions = ["index"]
+	var orders = ["first", "second", "third"]
 	
-	init_window_size()
+	var path = "res://entities/recipe/recipe.json"
+	var array = load_data(path)
 	
-func init_window_size():
-	vec.size.window = {}
-	vec.size.window.width = ProjectSettings.get_setting("display/window/size/viewport_width")
-	vec.size.window.height = ProjectSettings.get_setting("display/window/size/viewport_height")
-	vec.size.window.center = Vector2(vec.size.window.width/2, vec.size.window.height/2)
+	for recipe in array:
+		recipe.index = int(recipe.index)
+		var data = {}
+		data.shard = {}
+		var counts = []
+		var shards = []
+		var datas = []
+		
+		for key in recipe:
+			if !exceptions.has(key):
+				var words = key.split(" ")
+				
+				if words.size() > 1:
+					#var arr = get(words[1] + "s")
+					#arr.append(recipe[key])
+					datas.append(recipe[key])
+				else:
+					data[key] = recipe[key]
+		
+		
+		#for _i in shards.size():
+			#data.shard[shards[_i]] = counts[_i]
+		
+		var n = datas.size() / 2
+		for _i in range(0, datas.size() - n, 1):
+			data.shard[datas[_i + n]] = int(datas[_i])
+		
+		dict.recipe.index[recipe.index] = data
+	
+	var a = dict.recipe.index
+	pass
 	
 func init_color():
 	var h = 360.0

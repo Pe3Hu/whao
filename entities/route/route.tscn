@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcw5a61hrgyyg"]
 
 [ext_resource type="Script" path="res://entities/route/route.gd" id="1_2hdwv"]
-[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/token/token.tscn" id="2_uudok"]
+[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/trail/trail.tscn" id="2_uudok"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 

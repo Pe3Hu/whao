@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvo1qwnv4xmfc"]
+
+[ext_resource type="Script" path="res://entities/recipe/recipe.gd" id="1_yd2to"]
+[ext_resource type="PackedScene" uid="uid://bp1xacucsfu8v" path="res://entities/loot/loot.tscn" id="2_ca4vh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+
+[node name="Recipe" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
+script = ExtResource("1_yd2to")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Core" parent="HBox" instance=ExtResource("2_ca4vh")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Twin" parent="HBox" instance=ExtResource("2_ca4vh")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Shards" type="HBoxContainer" parent="HBox"]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="First" parent="HBox/Shards" instance=ExtResource("2_ca4vh")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Second" parent="HBox/Shards" instance=ExtResource("2_ca4vh")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Third" parent="HBox/Shards" instance=ExtResource("2_ca4vh")]
+unique_name_in_owner = true
+layout_mode = 2
