@@ -29,6 +29,28 @@ window/size/viewport_width=1800
 window/size/viewport_height=900
 window/stretch/mode="canvas_items"
 
+[file_customization]
+
+folder_colors={
+"res://entities/beast/": "yellow",
+"res://entities/craftsman/": "pink",
+"res://entities/crossroad/": "orange",
+"res://entities/flock/": "yellow",
+"res://entities/forge/": "pink",
+"res://entities/item/": "pink",
+"res://entities/loot/": "pink",
+"res://entities/maze/": "orange",
+"res://entities/member/": "green",
+"res://entities/milestone/": "orange",
+"res://entities/recipe/": "pink",
+"res://entities/route/": "yellow",
+"res://entities/squad/": "green",
+"res://entities/station/": "yellow",
+"res://entities/token/": "green",
+"res://entities/totem/": "yellow",
+"res://entities/trail/": "orange"
+}
+
 [input]
 
 ui_left={

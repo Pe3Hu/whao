@@ -1,11 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvo1qwnv4xmfc"]
+[gd_scene load_steps=5 format=3 uid="uid://dvo1qwnv4xmfc"]
 
 [ext_resource type="Script" path="res://entities/recipe/recipe.gd" id="1_yd2to"]
-[ext_resource type="PackedScene" uid="uid://bp1xacucsfu8v" path="res://entities/loot/loot.tscn" id="2_ca4vh"]
+[ext_resource type="Texture2D" uid="uid://b30tyaxjukx72" path="res://entities/item/images/bow.png" id="2_xwg02"]
+[ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://assets/fonts/digital/Inter-Black.ttf" id="3_2dftv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 
 [node name="Recipe" type="PanelContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -38.0
+offset_top = -64.0
+offset_right = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_yd2to")
 
@@ -14,27 +27,42 @@ layout_mode = 2
 theme_override_constants/separation = 6
 alignment = 1
 
-[node name="Core" parent="HBox" instance=ExtResource("2_ca4vh")]
+[node name="Result" type="TextureRect" parent="HBox"]
 unique_name_in_owner = true
 layout_mode = 2
+texture = ExtResource("2_xwg02")
 
-[node name="Twin" parent="HBox" instance=ExtResource("2_ca4vh")]
+[node name="Level" type="Label" parent="HBox/Result"]
 unique_name_in_owner = true
-layout_mode = 2
+z_index = 1
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_2dftv")
+theme_override_font_sizes/font_size = 20
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Shards" type="HBoxContainer" parent="HBox"]
+[node name="Primary" type="HBoxContainer" parent="HBox"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="First" parent="HBox/Shards" instance=ExtResource("2_ca4vh")]
+[node name="Secondary" type="HBoxContainer" parent="HBox"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Second" parent="HBox/Shards" instance=ExtResource("2_ca4vh")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Third" parent="HBox/Shards" instance=ExtResource("2_ca4vh")]
-unique_name_in_owner = true
-layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1

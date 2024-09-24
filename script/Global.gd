@@ -28,6 +28,10 @@ func init_arr() -> void:
 	arr.progression = ["stamina", "experience"]
 	
 	arr.rarity = ["common", "uncommon", "rare", "epic", "legendary"]
+	arr.order = ["primary", "secondary"]
+	arr.primary = ["brain", "heart", "liver", "jaw", "paw"]#["core", "twin"]
+	arr.secondary = ["skin", "bone", "blood", "plant", "ore"]#["shards"]
+	arr.ingredient = ["level", "rarity", "type"]
 	
 func init_dict() -> void:
 	init_direction()
@@ -288,42 +292,39 @@ func init_recipe() -> void:
 	dict.recipe = {}
 	dict.recipe.index = {}
 	var exceptions = ["index"]
-	var orders = ["first", "second", "third"]
 	
 	var path = "res://entities/recipe/recipe.json"
 	var array = load_data(path)
+	var orders = ["first", "second", "third"]
 	
 	for recipe in array:
 		recipe.index = int(recipe.index)
 		var data = {}
-		data.shard = {}
-		var counts = []
-		var shards = []
-		var datas = []
+		data.ingredients = {}
+		var shards = {}
 		
 		for key in recipe:
 			if !exceptions.has(key):
 				var words = key.split(" ")
 				
 				if words.size() > 1:
-					#var arr = get(words[1] + "s")
-					#arr.append(recipe[key])
-					datas.append(recipe[key])
+					if !shards.has(words[0]):
+						shards[words[0]] = recipe[key]
+					else:
+						shards[shards[words[0]]] = recipe[key]
 				else:
-					data[key] = recipe[key]
+					if arr.primary.has(recipe[key]):
+						data.ingredients[recipe[key]] = 1
+					else:
+						data[key] = recipe[key]
 		
+		for order in orders:
+			shards.erase(order)
 		
-		#for _i in shards.size():
-			#data.shard[shards[_i]] = counts[_i]
-		
-		var n = datas.size() / 2
-		for _i in range(0, datas.size() - n, 1):
-			data.shard[datas[_i + n]] = int(datas[_i])
+		for shard in shards:
+			data.ingredients[shard] = shards[shard]
 		
 		dict.recipe.index[recipe.index] = data
-	
-	var a = dict.recipe.index
-	pass
 	
 func init_color():
 	var h = 360.0

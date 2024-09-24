@@ -24,7 +24,3 @@ func _input(event) -> void:
 		match event.keycode:
 			KEY_ESCAPE:
 				get_tree().quit()
-		
-
-		
-	

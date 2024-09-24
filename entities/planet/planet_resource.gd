@@ -12,6 +12,7 @@ func _init() -> void:
 	maze = MazeResource.new()
 	maze.planet = self
 	forge = ForgeResource.new()
+	forge.planet = self
 	station = StationResource.new()
 	station.planet = self
 	

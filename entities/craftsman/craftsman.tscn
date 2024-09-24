@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://7gx8xcpc0il1"]
+
+[ext_resource type="Script" path="res://entities/craftsman/craftsman.gd" id="1_ny3jn"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+bg_color = Color(0.81, 0.4779, 0.649485, 0.976471)
+
+[node name="Craftsman" type="PanelContainer"]
+custom_minimum_size = Vector2(40, 40)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
+script = ExtResource("1_ny3jn")
+
+[node name="Recipes" type="ItemList" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(320, 320)
+layout_mode = 2
+
+[connection signal="item_selected" from="Recipes" to="." method="_on_recipes_item_selected"]

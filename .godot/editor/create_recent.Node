@@ -1,7 +1,8 @@
-HBoxContainer
-VBoxContainer
-PanelContainer
 TextureRect
+ItemList
+VBoxContainer
+HBoxContainer
+PanelContainer
 GridContainer
 Sprite2D
 ScrollContainer
@@ -11,4 +12,3 @@ Control
 MeshInstance2D
 MeshInstance3D
 Polygon2D
-TileMap
