@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://wvbvvucr7xla"]
+
+[ext_resource type="Script" path="res://entities/inventory_slot/inventory_slot.gd" id="1_awgi7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+
+[node name="InventorySlot" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
+script = ExtResource("1_awgi7")

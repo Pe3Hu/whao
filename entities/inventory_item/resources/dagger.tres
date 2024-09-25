@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://drkm5eovjfro8"]
+
+[ext_resource type="Script" path="res://entities/item/item_resource.gd" id="1_bbrjr"]
+[ext_resource type="Texture2D" uid="uid://d0er2suilapl0" path="res://entities/inventory_item/images/dagger.png" id="2_fnbg8"]
+
+[resource]
+script = ExtResource("1_bbrjr")
+type = 4
+name = "dagger"
+damage = 1
+defense = 0
+description = ""
+texture = ExtResource("2_fnbg8")

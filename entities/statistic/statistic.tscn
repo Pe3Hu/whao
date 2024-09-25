@@ -1,0 +1,344 @@
+[gd_scene load_steps=23 format=3 uid="uid://bfs7oqqxmoyl3"]
+
+[ext_resource type="Script" path="res://entities/statistic/statistic.gd" id="1_r6w0p"]
+[ext_resource type="Material" uid="uid://cdqjhsknqpkb1" path="res://entities/token/materials/stamina.tres" id="2_47yps"]
+[ext_resource type="Texture2D" uid="uid://df1ofskb37ta" path="res://entities/token/images/stamina.png" id="3_voxou"]
+[ext_resource type="Script" path="res://entities/token/token.gd" id="4_avs0v"]
+[ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://assets/fonts/digital/Inter-Black.ttf" id="5_rq5tp"]
+[ext_resource type="Material" uid="uid://bvfxn6etumrwn" path="res://entities/token/materials/experience.tres" id="6_jk4f5"]
+[ext_resource type="Texture2D" uid="uid://oaima86y1ss6" path="res://entities/token/images/experience.png" id="7_0p3rf"]
+[ext_resource type="Material" uid="uid://brwvgxqtaxjep" path="res://entities/token/materials/fang.tres" id="8_cbgmi"]
+[ext_resource type="Texture2D" uid="uid://bl4q2ukhbjgx7" path="res://entities/token/images/fang.png" id="9_yuhja"]
+[ext_resource type="Material" uid="uid://jaxghko8lwa1" path="res://entities/token/materials/claw.tres" id="10_rj424"]
+[ext_resource type="Texture2D" uid="uid://cbv7mmx5wbdc1" path="res://entities/token/images/claw.png" id="11_n8juo"]
+[ext_resource type="Material" uid="uid://b1ir611q6d7dt" path="res://entities/token/materials/exploration.tres" id="12_7n1go"]
+[ext_resource type="Texture2D" uid="uid://buctqy2664h05" path="res://entities/token/images/exploration.png" id="13_lgtg0"]
+[ext_resource type="Material" uid="uid://yd7ss403or8o" path="res://entities/token/materials/extraction.tres" id="14_u27ql"]
+[ext_resource type="Texture2D" uid="uid://bh4d8yphujlm6" path="res://entities/token/images/extraction.png" id="15_hgqly"]
+[ext_resource type="Material" uid="uid://c4tb24qsr0tr8" path="res://entities/token/materials/fury.tres" id="16_k7v7r"]
+[ext_resource type="Texture2D" uid="uid://c7l2uoiuv6rjx" path="res://entities/token/images/fury.png" id="17_orf0w"]
+[ext_resource type="Material" uid="uid://bkfabyqnqogs2" path="res://entities/token/materials/cunning.tres" id="18_fcyhq"]
+[ext_resource type="Texture2D" uid="uid://cbxtbfvepcqlg" path="res://entities/token/images/cunning.png" id="19_bskwj"]
+[ext_resource type="Material" uid="uid://cxdkhoji71uto" path="res://entities/token/materials/wisdom.tres" id="20_tkmtd"]
+[ext_resource type="Texture2D" uid="uid://uhineh5doivc" path="res://entities/token/images/wisdom.png" id="21_np7py"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+
+[node name="Statistic" type="PanelContainer"]
+custom_minimum_size = Vector2(100, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
+script = ExtResource("1_r6w0p")
+
+[node name="Stamina" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = ExtResource("2_47yps")
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("3_voxou")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "stamina"
+
+[node name="Value" type="Label" parent="Stamina"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Experience" type="TextureRect" parent="."]
+unique_name_in_owner = true
+material = ExtResource("6_jk4f5")
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture = ExtResource("7_0p3rf")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "experience"
+
+[node name="Value" type="Label" parent="Experience"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Offenses" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Fang" type="TextureRect" parent="Offenses"]
+unique_name_in_owner = true
+material = ExtResource("8_cbgmi")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("9_yuhja")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "fang"
+
+[node name="Value" type="Label" parent="Offenses/Fang"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Claw" type="TextureRect" parent="Offenses"]
+unique_name_in_owner = true
+material = ExtResource("10_rj424")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("11_n8juo")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "claw"
+
+[node name="Value" type="Label" parent="Offenses/Claw"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Supports" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Exploration" type="TextureRect" parent="Supports"]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("12_7n1go")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_lgtg0")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "exploration"
+
+[node name="Value" type="Label" parent="Supports/Exploration"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Extraction" type="TextureRect" parent="Supports"]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("14_u27ql")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_hgqly")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "extraction"
+
+[node name="Value" type="Label" parent="Supports/Extraction"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Defenses" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Fury" type="TextureRect" parent="Defenses"]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("16_k7v7r")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_orf0w")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+
+[node name="Value" type="Label" parent="Defenses/Fury"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Cunning" type="TextureRect" parent="Defenses"]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("18_fcyhq")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_bskwj")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "cunning"
+
+[node name="Value" type="Label" parent="Defenses/Cunning"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Wisdom" type="TextureRect" parent="Defenses"]
+unique_name_in_owner = true
+visible = false
+material = ExtResource("20_tkmtd")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("21_np7py")
+stretch_mode = 2
+script = ExtResource("4_avs0v")
+type = "wisdom"
+
+[node name="Value" type="Label" parent="Defenses/Wisdom"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.0
+offset_top = -12.5
+offset_right = 14.0
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("5_rq5tp")
+theme_override_font_sizes/font_size = 20
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1

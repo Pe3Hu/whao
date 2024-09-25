@@ -17,7 +17,7 @@ func set_forge(forge_: Forge) -> Recipe:
 func set_resource(resource_: RecipeResource) -> Recipe:
 	resource = resource_
 	
-	%Result.texture = load("res://entities/item/images/" + resource_.subtype + ".png")
+	%Result.texture = load("res://entities/equipment/images/" + resource_.subtype + ".png")
 	%Result.modulate = Global.color.rarity[resource_.rarity]
 	%Level.text = str(resource_.level)
 	init_ingredients()
@@ -40,5 +40,5 @@ func init_ingredients() -> void:
 			
 			loot.type = type
 			loot.rarity = resource.rarity
-			#loot.level = resource.level
+			loot.level = resource.level
 			loot.limit = ingredients[type]

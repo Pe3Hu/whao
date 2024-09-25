@@ -1,76 +1,69 @@
-[gd_scene load_steps=4 format=3 uid="uid://bp1xacucsfu8v"]
+[gd_scene load_steps=5 format=3 uid="uid://bp1xacucsfu8v"]
 
-[ext_resource type="Texture2D" uid="uid://bmfldqshsi5y4" path="res://entities/loot/images/blood.png" id="1_y3m01"]
+[ext_resource type="Texture2D" uid="uid://b8a7nmlig4aho" path="res://entities/loot/images/blood.png" id="1_y3m01"]
 [ext_resource type="Script" path="res://entities/loot/loot.gd" id="3_kdyp7"]
 [ext_resource type="FontFile" uid="uid://33eqagvh85us" path="res://assets/fonts/digital/Inter-Black.ttf" id="4_33txa"]
 
-[node name="Loot" type="TextureRect"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ivv7j"]
+
+[node name="Loot" type="PanelContainer"]
+custom_minimum_size = Vector2(48, 48)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
+offset_left = -48.0
+offset_top = -48.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ivv7j")
+script = ExtResource("3_kdyp7")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("1_y3m01")
-script = ExtResource("3_kdyp7")
-current = null
-limit = null
+stretch_mode = 3
 
 [node name="Level" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-offset_right = 32.0
-offset_bottom = 32.0
+custom_minimum_size = Vector2(22, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_33txa")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Current" type="Label" parent="."]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -32.0
-offset_right = 32.0
-grow_vertical = 0
+custom_minimum_size = Vector2(22, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_33txa")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Limit" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -32.0
-offset_top = -32.0
-grow_horizontal = 0
-grow_vertical = 0
+custom_minimum_size = Vector2(22, 20)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_33txa")
-theme_override_font_sizes/font_size = 20
+theme_override_font_sizes/font_size = 16
 text = "1"
 horizontal_alignment = 1
 vertical_alignment = 1

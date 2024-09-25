@@ -21,6 +21,7 @@ grow_vertical = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("2_em0is")
+stretch_mode = 2
 script = ExtResource("3_7j1e5")
 type = "stamina"
 

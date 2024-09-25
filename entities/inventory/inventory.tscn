@@ -1,0 +1,64 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmtv5egd6dmj7"]
+
+[ext_resource type="Script" path="res://entities/inventory/inventory.gd" id="1_piowh"]
+[ext_resource type="PackedScene" uid="uid://wvbvvucr7xla" path="res://entities/inventory_slot/inventory_slot.tscn" id="2_16lim"]
+[ext_resource type="Script" path="res://entities/inventory_slot/slot_resource.gd" id="3_51cfd"]
+
+[sub_resource type="Resource" id="Resource_3htfd"]
+script = ExtResource("3_51cfd")
+type = 0
+subtype = 0
+kind = 0
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_hgchg"]
+script = ExtResource("3_51cfd")
+type = 0
+subtype = 0
+kind = 0
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[node name="Inventory" type="Control"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_piowh")
+
+[node name="InventorySlot" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 192.0
+offset_right = 448.0
+offset_bottom = 224.0
+inventory = NodePath("..")
+resource = SubResource("Resource_3htfd")
+
+[node name="InventorySlot2" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 0
+offset_left = 416.0
+offset_top = 256.0
+offset_right = 448.0
+offset_bottom = 288.0
+inventory = NodePath("..")
+resource = SubResource("Resource_hgchg")
+
+[node name="Grid" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 512.0
+offset_top = 192.0
+offset_right = 704.0
+offset_bottom = 320.0
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 6

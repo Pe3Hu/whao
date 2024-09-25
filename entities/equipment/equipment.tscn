@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca48dw3j2ie7l"]
+
+[ext_resource type="Script" path="res://entities/equipment/equipment.gd" id="1_ym178"]
+[ext_resource type="Texture2D" uid="uid://cd3ad0gr08int" path="res://entities/equipment/images/axe.png" id="2_ctxsb"]
+[ext_resource type="PackedScene" uid="uid://cqinhg46huhph" path="res://entities/trail/trail.tscn" id="3_jr0qi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+
+[node name="Equipment" type="PanelContainer"]
+theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
+script = ExtResource("1_ym178")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1
+
+[node name="Type" type="TextureRect" parent="VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_ctxsb")
+
+[node name="Primary" parent="VBox" instance=ExtResource("3_jr0qi")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Affixs" type="VBoxContainer" parent="VBox"]
+layout_mode = 2
+theme_override_constants/separation = 0
+alignment = 1

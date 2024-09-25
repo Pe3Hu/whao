@@ -1,8 +1,8 @@
-TextureRect
-ItemList
-VBoxContainer
 HBoxContainer
 PanelContainer
+VBoxContainer
+TextureRect
+ItemList
 GridContainer
 Sprite2D
 ScrollContainer

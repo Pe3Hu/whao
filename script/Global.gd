@@ -39,7 +39,7 @@ func init_dict() -> void:
 	init_also()
 	
 	init_profession()
-	init_item()
+	init_equipment()
 	init_crossroad()
 	init_beast()
 	init_recipe()
@@ -255,38 +255,38 @@ func init_beast() -> void:
 			dict.terrain.beast[terrain][beast.title] = data.terrain[terrain]
 			dict.terrain.total[terrain] += data.terrain[terrain]
 	
-func init_item() -> void:
-	dict.item = {}
-	dict.item.title = {}
-	dict.item.type = {}
+func init_equipment() -> void:
+	dict.equipment = {}
+	dict.equipment.title = {}
+	dict.equipment.type = {}
 	var exceptions = ["title"]
 	
-	var path = "res://entities/item/item.json"
+	var path = "res://entities/equipment/equipment.json"
 	var array = load_data(path)
 	
-	for item in array:
+	for equipment in array:
 		var data = {}
 		data.affixs = {}
 		
-		for key in item:
+		for key in equipment:
 			if !exceptions.has(key):
 				var words = key.split(" ")
 				
 				if words.size() > 1:
 					match words[0]:
 						"affix":
-							data.affixs[item[key]] = -1
+							data.affixs[equipment[key]] = -1
 						"weight":
 							var affix = data.affixs.keys()[int(words[1])]
-							data.affixs[affix] = item[key]
+							data.affixs[affix] = equipment[key]
 				else:
-					data[key] = item[key]
+					data[key] = equipment[key]
 	
-		if !dict.item.type.has(item.type):
-			dict.item.type[item.type] = []
+		if !dict.equipment.type.has(equipment.type):
+			dict.equipment.type[equipment.type] = []
 		
-		dict.item.type[item.type].append(item.title)
-		dict.item.title[item.title] = data
+		dict.equipment.type[equipment.type].append(equipment.title)
+		dict.equipment.title[equipment.title] = data
 	
 func init_recipe() -> void:
 	dict.recipe = {}

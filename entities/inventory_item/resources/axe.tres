@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=3 format=3 uid="uid://c6ebx6gn1di3d"]
+
+[ext_resource type="Script" path="res://entities/item/item_resource.gd" id="1_5pnja"]
+[ext_resource type="Texture2D" uid="uid://elkxkrgvnarr" path="res://entities/inventory_item/images/axe.png" id="2_5myc5"]
+
+[resource]
+script = ExtResource("1_5pnja")
+type = 4
+name = "Axe"
+damage = 3
+defense = 0
+description = ""
+texture = ExtResource("2_5myc5")
