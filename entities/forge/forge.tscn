@@ -1,26 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://0cxdkmouxv8r"]
+[gd_scene load_steps=3 format=3 uid="uid://0cxdkmouxv8r"]
 
 [ext_resource type="Script" path="res://entities/forge/forge.gd" id="1_gy250"]
-[ext_resource type="PackedScene" uid="uid://7gx8xcpc0il1" path="res://entities/craftsman/craftsman.tscn" id="2_kb2nk"]
-[ext_resource type="PackedScene" uid="uid://dvo1qwnv4xmfc" path="res://entities/recipe/recipe.tscn" id="3_846o5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 
 [node name="Forge" type="PanelContainer"]
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_gy250")
-
-[node name="HBox" type="HBoxContainer" parent="."]
-layout_mode = 2
-theme_override_constants/separation = 4
-alignment = 1
-
-[node name="Craftsman" parent="HBox" node_paths=PackedStringArray("forge") instance=ExtResource("2_kb2nk")]
-unique_name_in_owner = true
-layout_mode = 2
-forge = NodePath("../..")
-
-[node name="Recipe" parent="HBox" node_paths=PackedStringArray("forge") instance=ExtResource("3_846o5")]
-unique_name_in_owner = true
-layout_mode = 2
-forge = NodePath("../..")

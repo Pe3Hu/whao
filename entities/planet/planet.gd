@@ -15,10 +15,10 @@ func _ready() -> void:
 	resource = PlanetResource.new()
 	#%Maze.set_resource(resource.maze).set_planet(self)
 	#%Station.set_resource(resource.station).set_planet(self)
-	%Forge.set_resource(resource.forge).set_planet(self)
+	#%Forge.set_resource(resource.forge).set_planet(self)
 	
 	#init_flock_combo()
-	#init_guilds()
+	init_guilds()
 	#init_dungeons()
 	
 func init_guilds() -> void:

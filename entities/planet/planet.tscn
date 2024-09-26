@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm5me58j23h86"]
+[gd_scene load_steps=5 format=3 uid="uid://bm5me58j23h86"]
 
 [ext_resource type="Script" path="res://entities/planet/planet.gd" id="1_piy68"]
 [ext_resource type="PackedScene" uid="uid://c0f5w4dd4rvd5" path="res://entities/maze/maze.tscn" id="2_xqfb0"]
 [ext_resource type="PackedScene" uid="uid://bwst6ot0ty4xa" path="res://entities/station/station.tscn" id="3_cb7wy"]
-[ext_resource type="PackedScene" uid="uid://0cxdkmouxv8r" path="res://entities/forge/forge.tscn" id="4_41kk1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 bg_color = Color(0.448093, 0.655197, 0.538936, 1)
@@ -35,7 +34,6 @@ theme_override_constants/separation = 0
 alignment = 1
 
 [node name="Guilds" type="VBoxContainer" parent="HBox"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1
@@ -45,9 +43,5 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Station" parent="HBox" instance=ExtResource("3_cb7wy")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Forge" parent="HBox" instance=ExtResource("4_41kk1")]
 unique_name_in_owner = true
 layout_mode = 2

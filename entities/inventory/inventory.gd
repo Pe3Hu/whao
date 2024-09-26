@@ -11,7 +11,7 @@ class_name Inventory extends Control
 
 
 func _ready() -> void:
-	for _i in 24:
+	for _i in 15:
 		var slot := InventorySlot.new()
 		var slot_resource = SlotResource.new()
 		slot.init(self, slot_resource)

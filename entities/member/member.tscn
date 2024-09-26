@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c8rbmyj320dx4"]
+[gd_scene load_steps=6 format=3 uid="uid://c8rbmyj320dx4"]
 
 [ext_resource type="Script" path="res://entities/member/member.gd" id="1_gxcw5"]
 [ext_resource type="PackedScene" uid="uid://bfs7oqqxmoyl3" path="res://entities/statistic/statistic.tscn" id="2_cl1t0"]
 [ext_resource type="PackedScene" uid="uid://dmtv5egd6dmj7" path="res://entities/inventory/inventory.tscn" id="3_ccqvt"]
+[ext_resource type="PackedScene" uid="uid://7gx8xcpc0il1" path="res://entities/craftsman/craftsman.tscn" id="4_7bh5k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 
@@ -16,9 +17,14 @@ layout_mode = 2
 theme_override_constants/separation = 4
 alignment = 1
 
-[node name="Statistic" parent="HBoxContainer" instance=ExtResource("2_cl1t0")]
+[node name="Statistic" parent="HBoxContainer" node_paths=PackedStringArray("member") instance=ExtResource("2_cl1t0")]
 layout_mode = 2
+member = NodePath("../..")
 
 [node name="Inventory" parent="HBoxContainer" node_paths=PackedStringArray("member") instance=ExtResource("3_ccqvt")]
+layout_mode = 2
+member = NodePath("../..")
+
+[node name="Craftsman" parent="HBoxContainer" node_paths=PackedStringArray("member") instance=ExtResource("4_7bh5k")]
 layout_mode = 2
 member = NodePath("../..")

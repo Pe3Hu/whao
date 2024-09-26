@@ -1,9 +1,20 @@
+@tool
 class_name InventorySlot extends PanelContainer
 
 
 @export var inventory: Inventory
 @export var resource: SlotResource
-
+@export var kind: SlotResource.Kind:
+	set(kind_):
+		kind = kind_
+		
+		if is_node_ready():
+			if kind != SlotResource.Kind.ANY:
+				var key = SlotResource.Kind.keys()[kind]
+				key = str(key).to_lower() 
+				%BG.texture = load("res://entities/equipment/images/" + key + ".png")
+			else:
+				%BG.texture = null
 
 func init(inventory_: Inventory, resource_: SlotResource) -> void:
 	inventory = inventory_

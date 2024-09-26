@@ -1,64 +1,219 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmtv5egd6dmj7"]
+[gd_scene load_steps=15 format=3 uid="uid://dmtv5egd6dmj7"]
 
 [ext_resource type="Script" path="res://entities/inventory/inventory.gd" id="1_piowh"]
 [ext_resource type="PackedScene" uid="uid://wvbvvucr7xla" path="res://entities/inventory_slot/inventory_slot.tscn" id="2_16lim"]
 [ext_resource type="Script" path="res://entities/inventory_slot/slot_resource.gd" id="3_51cfd"]
 
-[sub_resource type="Resource" id="Resource_3htfd"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3jmr"]
+bg_color = Color(0.336308, 0.631333, 0.84275, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1u2h"]
+bg_color = Color(0.757687, 0.492675, 0.741683, 1)
+
+[sub_resource type="Resource" id="Resource_76c60"]
 script = ExtResource("3_51cfd")
-type = 0
-subtype = 0
-kind = 0
+type = 1
+subtype = 2
+kind = 1
 rarity = 0
 level = 0
 current_stack = 0
 max_stack = 0
 
-[sub_resource type="Resource" id="Resource_hgchg"]
+[sub_resource type="Resource" id="Resource_l1fm8"]
 script = ExtResource("3_51cfd")
-type = 0
-subtype = 0
-kind = 0
+type = 1
+subtype = 2
+kind = 2
 rarity = 0
 level = 0
 current_stack = 0
 max_stack = 0
 
-[node name="Inventory" type="Control"]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[sub_resource type="Resource" id="Resource_q86ts"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 2
+kind = 3
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_ta6xd"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 2
+kind = 4
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_jog8p"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 1
+kind = 7
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_tb04f"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 3
+kind = 12
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_e5wqw"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 3
+kind = 12
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_wyp7u"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 3
+kind = 14
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[sub_resource type="Resource" id="Resource_t20su"]
+script = ExtResource("3_51cfd")
+type = 1
+subtype = 2
+kind = 5
+rarity = 0
+level = 0
+current_stack = 0
+max_stack = 0
+
+[node name="Inventory" type="PanelContainer"]
+custom_minimum_size = Vector2(216, 168)
+offset_right = 216.0
+offset_bottom = 176.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_g3jmr")
 script = ExtResource("1_piowh")
 
-[node name="InventorySlot" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = 416.0
-offset_top = 192.0
-offset_right = 448.0
-offset_bottom = 224.0
-inventory = NodePath("..")
-resource = SubResource("Resource_3htfd")
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
 
-[node name="InventorySlot2" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
-custom_minimum_size = Vector2(32, 32)
-layout_mode = 0
-offset_left = 416.0
-offset_top = 256.0
-offset_right = 448.0
-offset_bottom = 288.0
-inventory = NodePath("..")
-resource = SubResource("Resource_hgchg")
+[node name="Actives" type="PanelContainer" parent="HBox"]
+custom_minimum_size = Vector2(112, 176)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_u1u2h")
 
-[node name="Grid" type="GridContainer" parent="."]
+[node name="TL" type="VBoxContainer" parent="HBox/Actives"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="HelmetSlot" parent="HBox/Actives/TL" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = 512.0
-offset_top = 192.0
-offset_right = 704.0
-offset_bottom = 320.0
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
-columns = 6
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_76c60")
+kind = 1
+
+[node name="ChestSlot" parent="HBox/Actives/TL" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_l1fm8")
+kind = 2
+
+[node name="BT" type="VBoxContainer" parent="HBox/Actives"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="GlovesSlot" parent="HBox/Actives/BT" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_q86ts")
+kind = 3
+
+[node name="PantsSlot" parent="HBox/Actives/BT" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_ta6xd")
+kind = 4
+
+[node name="WeaponSlot" parent="HBox/Actives" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../..")
+resource = SubResource("Resource_jog8p")
+kind = 7
+
+[node name="TR" type="VBoxContainer" parent="HBox/Actives"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="NecklaceSlot" parent="HBox/Actives/TR" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_tb04f")
+kind = 12
+
+[node name="EarringSlot" parent="HBox/Actives/TR" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_e5wqw")
+kind = 13
+
+[node name="BR" type="VBoxContainer" parent="HBox/Actives"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/separation = 8
+alignment = 1
+
+[node name="RingSlot" parent="HBox/Actives/BR" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_wyp7u")
+kind = 14
+
+[node name="BootsSlot" parent="HBox/Actives/BR" node_paths=PackedStringArray("inventory") instance=ExtResource("2_16lim")]
+unique_name_in_owner = true
+layout_mode = 2
+inventory = NodePath("../../../..")
+resource = SubResource("Resource_t20su")
+kind = 5
+
+[node name="Grid" type="GridContainer" parent="HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(104, 168)
+layout_mode = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 3

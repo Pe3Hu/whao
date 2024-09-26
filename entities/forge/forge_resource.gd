@@ -7,14 +7,10 @@ var recipes: Dictionary
 
 
 func _init() -> void:
+	return 
 	var member = MemberResource.new()
 	add_craftsman(member)
-	var indexs = Global.dict.recipe.index.keys()#[0, 13]
-	var level = 2
-	var rarity = "uncommon"
 	
-	for index in indexs:
-		craftsmans[0].add_recipe(index, level, rarity)
 
 func add_craftsman(member_: MemberResource) -> void:
 	var craftsman = CraftsmanResource.new()

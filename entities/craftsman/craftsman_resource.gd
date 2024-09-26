@@ -10,13 +10,14 @@ var recipes: Array[RecipeResource]
 
 func set_member(member_: MemberResource) -> CraftsmanResource:
 	member = member_
+	forge = member.guild.planet.forge
 	return self
 	
 func set_forge(forge_: ForgeResource) -> CraftsmanResource:
 	forge = forge_
 	forge.craftsmans.append(self)
 	return self
-
+	
 func add_recipe(index_: int, level_: int, rarity_: String) -> void:
 	var recipe
 	
@@ -35,3 +36,11 @@ func add_recipe(index_: int, level_: int, rarity_: String) -> void:
 	
 	recipes.append(recipe)
 	recipe.craftsmans.append(self)
+	
+func init_basic_recipe() -> void:
+	var indexs = Global.dict.recipe.index.keys()#[0, 13]
+	var level = 2
+	var rarity = "uncommon"
+	
+	for index in indexs:
+		add_recipe(index, level, rarity)

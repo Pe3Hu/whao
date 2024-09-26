@@ -3,7 +3,20 @@
 [ext_resource type="Script" path="res://entities/inventory_slot/inventory_slot.gd" id="1_awgi7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
+bg_color = Color(0.78, 0.66274, 0.6084, 1)
 
 [node name="InventorySlot" type="PanelContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_awgi7")
+
+[node name="BG" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+stretch_mode = 2

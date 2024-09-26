@@ -11,6 +11,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_ym178")
 
 [node name="VBox" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 0
 alignment = 1

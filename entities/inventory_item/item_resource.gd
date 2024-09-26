@@ -12,7 +12,7 @@ enum Shard {SKIN, BONE, BLOOD, PLANT, ORE}
 enum Type {EQUIPMENT, LOOT}
 enum Subtype {WEAPON, ARMOR, JEWELLRY, CORE, TWIN, SHARD}
 
-enum Rarity {COMMON, UNCOMMON, RARE, EPIC, LEGENDARY}
+enum Rarity {ANY, COMMON, UNCOMMON, RARE, EPIC, LEGENDARY}
 
 @export var type: Type
 @export var subtype: Type

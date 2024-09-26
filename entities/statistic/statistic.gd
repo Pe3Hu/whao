@@ -1,7 +1,7 @@
 class_name Statistic extends PanelContainer
 
 
-var member: Member
+@export var member: Member
 var resource: StatisticResource
 
 
@@ -9,6 +9,7 @@ func init(member_: Member, resource_: StatisticResource) -> void:
 	member = member_
 	resource = resource_
 	custom_minimum_size = resource_.cms
+	update_tokens()
 	
 func update_tokens() -> void:
 	for token in Global.arr.token:

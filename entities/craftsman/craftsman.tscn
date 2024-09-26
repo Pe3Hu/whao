@@ -1,21 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://7gx8xcpc0il1"]
+[gd_scene load_steps=4 format=3 uid="uid://7gx8xcpc0il1"]
 
 [ext_resource type="Script" path="res://entities/craftsman/craftsman.gd" id="1_ny3jn"]
+[ext_resource type="PackedScene" uid="uid://dvo1qwnv4xmfc" path="res://entities/recipe/recipe.tscn" id="2_ft2ft"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0uytx"]
 bg_color = Color(0.81, 0.4779, 0.649485, 0.976471)
 
 [node name="Craftsman" type="PanelContainer"]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(382, 160)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -900.0
+offset_top = -450.0
+offset_right = -518.0
+offset_bottom = -290.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -23,9 +24,18 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_0uytx")
 script = ExtResource("1_ny3jn")
 
-[node name="Recipes" type="ItemList" parent="."]
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 4
+alignment = 1
+
+[node name="Recipes" type="ItemList" parent="HBox"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(320, 320)
+custom_minimum_size = Vector2(320, 160)
 layout_mode = 2
 
-[connection signal="item_selected" from="Recipes" to="." method="_on_recipes_item_selected"]
+[node name="Recipe" parent="HBox" instance=ExtResource("2_ft2ft")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="item_selected" from="HBox/Recipes" to="." method="_on_recipes_item_selected"]

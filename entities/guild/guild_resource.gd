@@ -13,6 +13,8 @@ func set_planet(planet_: PlanetResource) -> GuildResource:
 	return self
 	
 func init_members() -> void:
-	for profession in Global.dict.profession.title:
+	var professions = [Global.dict.profession.title.keys().front()]
+	
+	for profession in professions:#Global.dict.profession.title:
 		var member = MemberResource.new()
-		member.set_profession(profession).set_guild(self)
+		member.init(self, profession)
